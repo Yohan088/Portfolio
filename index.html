@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Engineering Portfolio – Agents, Automation & Computer Vision</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Simple fade-up on load for hero */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up {
+      animation: fadeUp 0.4s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+  <!-- Navbar -->
+  <header class="border-b border-slate-100 sticky top-0 bg-white/90 backdrop-blur z-20">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#top" class="font-semibold tracking-tight text-slate-900">
+        AI Portfolio
+      </a>
+      <nav class="hidden sm:flex gap-5 text-sm text-slate-600">
+        <a href="#agents" class="hover:text-slate-900">Agents</a>
+        <a href="#tools" class="hover:text-slate-900">Agentic Tools</a>
+        <a href="#python-tools" class="hover:text-slate-900">Python Tools</a>
+        <a href="#cv-local" class="hover:text-slate-900">CV & Roboflow</a>
+        <a href="#projects" class="hover:text-slate-900">Student Projects</a>
+        <a href="#about" class="hover:text-slate-900">About / Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="max-w-5xl mx-auto px-4 pb-16">
+    <!-- HERO -->
+    <section class="pt-10 sm:pt-16 mb-16 animate-fade-up">
+      <div class="flex flex-col gap-6 sm:gap-8 sm:flex-row sm:items-center">
+        <div class="flex-1">
+          <p class="text-xs font-medium uppercase tracking-[0.18em] text-slate-500 mb-3">
+            AI Engineering • Agents • Automation • Computer Vision
+          </p>
+          <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight mb-3">
+            AI Engineer in training,<br />focused on agents, automation and computer vision.
+          </h1>
+          <p class="text-sm sm:text-base text-slate-600 mb-5 max-w-xl">
+            Engineering student building <span class="font-medium text-slate-900">real AI agents</span>
+            (no-code to Python), <span class="font-medium text-slate-900">agentic workflows</span> with tools
+            like Make, n8n and AgentKit, and <span class="font-medium text-slate-900">computer vision pipelines</span>
+            inspired by SaaS products such as Roboflow.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="#agents"
+               class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg
+                      bg-slate-900 text-white hover:bg-slate-800 transition">
+              View AI Agents
+            </a>
+            <a href="#projects"
+               class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg
+                      border border-slate-300 text-slate-800 hover:border-slate-400 transition">
+              See Student Projects
+            </a>
+          </div>
+        </div>
+        <div class="flex-1 sm:max-w-xs sm:ml-4">
+          <div class="border border-slate-100 rounded-2xl p-4 sm:p-5 shadow-sm">
+            <p class="text-xs font-medium text-slate-500 mb-2 uppercase tracking-[0.16em]">
+              Snapshot
+            </p>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1.5">
+              <li><span class="font-semibold text-slate-900">Agents IA :</span> GPT, n8n, Python custom</li>
+              <li><span class="font-semibold text-slate-900">Agentic tools :</span> Make, n8n, AgentKit, ChatGPT, Google Antigravity</li>
+              <li><span class="font-semibold text-slate-900">Python :</span> automation tools (MSI), CV pipelines</li>
+              <li><span class="font-semibold text-slate-900">Domain :</span> sports / computer vision / automation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: AGENTS IA -->
+    <section id="agents" class="mb-16">
+      <div class="mb-6 flex items-baseline justify-between gap-3">
+        <h2 class="text-2xl font-semibold tracking-tight">
+          AI Agents – From no-code to custom Python
+        </h2>
+        <p class="text-xs uppercase tracking-[0.18em] text-slate-500">
+          3 levels • 6+ agents
+        </p>
+      </div>
+      <p class="text-sm text-slate-600 mb-5 max-w-3xl">
+        I design agents with increasing complexity: from simple GPT-based assistants,
+        to orchestrated multi-tool workflows in n8n, up to fully custom Python agents
+        connected to real tools and APIs.
+      </p>
+      <div class="grid gap-5 md:grid-cols-3">
+        <!-- Easy -->
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
+            Level 1 • Easy
+          </p>
+          <h3 class="text-base font-semibold mb-1">GPT-based Agents (2)</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Small agents created with GPT (custom instructions + tools) to automate
+            focused tasks like document analysis, answer generation or simple decision support.
+          </p>
+          <p class="text-xs text-slate-500 mb-3">
+            Tech: GPT, custom system prompts, structured outputs.
+          </p>
+          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+            Watch demo video
+            <span class="ml-1">▶</span>
+          </a>
+        </article>
+
+        <!-- Medium -->
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
+            Level 2 • Medium
+          </p>
+          <h3 class="text-base font-semibold mb-1">Agentic workflows in n8n (3)</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Agents orchestrated with n8n, combining LLM calls, API calls and condition logic
+            to process images, generate content or trigger actions based on AI outputs.
+          </p>
+          <p class="text-xs text-slate-500 mb-3">
+            Tech: n8n, webhooks, OpenAI, HTTP modules, conditional routing.
+          </p>
+          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+            Watch demo videos
+            <span class="ml-1">▶</span>
+          </a>
+        </article>
+
+        <!-- Hard -->
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
+            Level 3 • Hard
+          </p>
+          <h3 class="text-base font-semibold mb-1">Custom Python Agent (1)</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            A Python-based agent that calls tools programmatically (APIs, file system,
+            CV functions), with its own reasoning loop and structured outputs.
+          </p>
+          <p class="text-xs text-slate-500 mb-3">
+            Tech: Python, OpenAI API, custom tools, orchestration logic.
+          </p>
+          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+            Watch demo video
+            <span class="ml-1">▶</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: ECOSYSTEME AGENTIQUE -->
+    <section id="tools" class="mb-16">
+      <div class="mb-6 flex items-baseline justify-between gap-3">
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Agentic & automation tools
+        </h2>
+      </div>
+      <p class="text-sm text-slate-600 mb-4 max-w-3xl">
+        I work with a full ecosystem of tools to design agentic workflows, mixing no-code,
+        low-code and code. My objective is to move from prototype to robust, maintainable
+        automation.
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <!-- Each badge = one tool -->
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+          Make (Integromat)
+        </span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+          n8n
+        </span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+          AgentKit (OpenAI)
+        </span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+          ChatGPT (Codex, Agent Mode)
+        </span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+          Google Antigravity
+        </span>
+      </div>
+      <p class="text-xs text-slate-500 mt-4 max-w-3xl">
+        Examples: connecting Telegram or web apps to AI agents, chaining perception
+        (computer vision) with reasoning and action, or building internal tools for
+        repetitive tasks.
+      </p>
+    </section>
+
+    <!-- SECTION: PYTHON TOOLS (MSI) -->
+    <section id="python-tools" class="mb-16">
+      <div class="mb-6 flex items-baseline justify-between gap-3">
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Python automation tools (MSI)
+        </h2>
+      </div>
+      <p class="text-sm text-slate-600 mb-5 max-w-3xl">
+        I package Python scripts as MSI installers to make them easy to use for
+        non-technical users. The goal is to turn one-off scripts into repeatable,
+        reliable internal tools.
+      </p>
+      <div class="grid gap-5 md:grid-cols-2">
+        <!-- Tool 1 -->
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
+          <h3 class="text-base font-semibold mb-1">[Python Tool #1]</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Short description of what this tool automates (file processing, dataset
+            preparation, report generation, etc.).
+          </p>
+          <p class="text-xs text-slate-500 mb-3">
+            Tech: Python, CLI, MSI packaging.
+          </p>
+          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+            GitHub repository
+            <span class="ml-1">↗</span>
+          </a>
+        </article>
+
+        <!-- Tool 2 -->
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
+          <h3 class="text-base font-semibold mb-1">[Python Tool #2]</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Another example: e.g. automatic renaming, data cleaning, or integration
+            with an external API.
+          </p>
+          <p class="text-xs text-slate-500 mb-3">
+            Tech: Python, scheduling, logging.
+          </p>
+          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+            GitHub repository
+            <span class="ml-1">↗</span>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: RECREATION ROBOFLOW LOCAL -->
+    <section id="cv-local" class="mb-16">
+      <div class="mb-6 flex items-baseline justify-between gap-3">
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Recreating Roboflow-like features locally
+        </h2>
+      </div>
+      <p class="text-sm text-slate-600 mb-4 max-w-3xl">
+        Inspired by Roboflow, I recreated key dataset transformation features in local
+        Python scripts, to keep full control over data and infrastructure.
+      </p>
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="border border-slate-200 rounded-xl p-4">
+          <h3 class="text-base font-semibold mb-1">Batch image flipping</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Automated horizontal and vertical flips for entire datasets, with consistent
+            annotation handling when combined with bounding boxes.
+          </p>
+          <p class="text-xs text-slate-500">
+            Tech: Python, Pillow / OpenCV, dataset iteration.
+          </p>
+        </article>
+        <article class="border border-slate-200 rounded-xl p-4">
+          <h3 class="text-base font-semibold mb-1">Automatic cropping</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Local pipeline to crop images or regions of interest, similar to Roboflow
+            preprocessing, integrated into my computer vision workflows.
+          </p>
+          <p class="text-xs text-slate-500">
+            Tech: Python, OpenCV, filesystem automation.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: STUDENT PROJECTS -->
+    <section id="projects" class="mb-16">
+      <div class="mb-6 flex items-baseline justify-between gap-3">
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Student projects – AI inside real workflows
+        </h2>
+      </div>
+      <div class="space-y-5">
+        <!-- Project 1 -->
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
+          <h3 class="text-base font-semibold mb-1">
+            Workflow × AI implementation
+          </h3>
+          <p class="text-sm text-slate-600 mb-2">
+            Design of an end-to-end workflow where AI is embedded as a core component
+            (decision, prediction or perception), from input data to action.
+          </p>
+          <p class="text-xs text-slate-500 mb-2">
+            Focus: problem framing, tool selection, evaluation of AI’s added value.
+          </p>
+          <p class="text-xs text-slate-500">
+            Tech: Python, APIs, agentic orchestration, possibly Make / n8n.
+          </p>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
+          <h3 class="text-base font-semibold mb-1">
+            SaaS concept based on computer vision
+          </h3>
+          <p class="text-sm text-slate-600 mb-2">
+            Creation of a SaaS concept leveraging computer vision: from data ingestion,
+            through model usage (e.g. YOLO / similar), to value delivered to end users
+            in a concrete domain.
+          </p>
+          <p class="text-xs text-slate-500 mb-2">
+            Focus: product thinking, constraints of deploying CV models, user impact.
+          </p>
+          <p class="text-xs text-slate-500">
+            Tech: Python, CV libraries, basic backend / automation tooling.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SECTION: ABOUT / CONTACT -->
+    <section id="about" class="mb-10">
+      <div class="mb-4 flex items-baseline justify-between gap-3">
+        <h2 class="text-2xl font-semibold tracking-tight">
+          About & contact
+        </h2>
+      </div>
+      <p class="text-sm text-slate-600 mb-3 max-w-3xl">
+        I am an engineering student specialising in AI, agents and computer vision.
+        I enjoy building concrete systems: not only models, but full workflows where
+        AI interacts with tools, APIs and real data.
+      </p>
+      <p class="text-sm text-slate-600 mb-4 max-w-3xl">
+        I am currently looking for an internship in AI engineering / agentic AI /
+        computer vision, where I can contribute to real products while learning from
+        experienced teams.
+      </p>
+      <div class="flex flex-wrap gap-3 text-sm">
+        <a href="mailto:your.email@example.com"
+           class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+          your.email@example.com
+        </a>
+        <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+          LinkedIn
+        </a>
+        <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+          GitHub
+        </a>
+        <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+          Download CV (PDF)
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
