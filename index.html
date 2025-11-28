@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AI Engineering Portfolio – Agents, Automation & Computer Vision</title>
+  <title>AI Engineering Portfolio – Premium</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -10,74 +10,179 @@
     html {
       scroll-behavior: smooth;
     }
-    /* Simple fade-up on load for hero */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
+    body {
+      background: #F8F8F6; /* blanc cassé */
+      color: #1E1E1E;      /* anthracite */
     }
-    .animate-fade-up {
-      animation: fadeUp 0.4s ease-out forwards;
+    /* Typo premium : serif pour les titres */
+    h1, h2, h3 {
+      font-family: "Georgia", "Times New Roman", serif;
+      letter-spacing: 0.01em;
+    }
+    /* Fade + blur lent */
+    @keyframes fadeBlurUp {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+        filter: blur(4px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+    .animate-fade-blur-up {
+      animation: fadeBlurUp 0.6s ease-out forwards;
+    }
+    /* Underline or premium (hover) */
+    .gold-underline {
+      position: relative;
+      display: inline-block;
+    }
+    .gold-underline::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #D4A747, #F0D78B);
+      transition: width 0.35s ease;
+    }
+    .gold-underline:hover::after {
+      width: 100%;
+    }
+    /* Cards premium : bords doux, ombre subtile */
+    .card-premium {
+      border-radius: 18px;
+      border: 1px solid #E2DFD4;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .card-premium:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.10);
+      border-color: #D4A747;
+    }
+    /* Boutons premium */
+    .btn-primary-premium {
+      background: #0E1F40;
+      color: #F8F8F6;
+      border-radius: 999px;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid #0E1F40;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    }
+    .btn-primary-premium:hover {
+      background: #142a55;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(14, 31, 64, 0.35);
+    }
+    .btn-outline-premium {
+      border-radius: 999px;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: 1px solid #D4A747;
+      color: #0E1F40;
+      background: transparent;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
+    }
+    .btn-outline-premium:hover {
+      background: #F3E7C5;
+      transform: translateY(-1px);
+    }
+    /* Barre de progression de scroll ultra fine */
+    #scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #D4A747, #0E1F40);
+      width: 0;
+      z-index: 40;
     }
   </style>
 </head>
-<body class="bg-white text-slate-900 antialiased">
+<body class="antialiased">
+  <!-- Barre de progression scroll -->
+  <div id="scroll-progress"></div>
+
   <!-- Navbar -->
-  <header class="border-b border-slate-100 sticky top-0 bg-white/90 backdrop-blur z-20">
+  <header class="border-b border-[#E2DFD4] sticky top-0 bg-[#F8F8F6]/95 backdrop-blur z-30">
     <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="font-semibold tracking-tight text-slate-900">
-        AI Portfolio
+      <a href="#top" class="font-semibold tracking-tight text-[#0E1F40]">
+        AI Engineering Portfolio
       </a>
-      <nav class="hidden sm:flex gap-5 text-sm text-slate-600">
-        <a href="#agents" class="hover:text-slate-900">Agents</a>
-        <a href="#tools" class="hover:text-slate-900">Agentic Tools</a>
-        <a href="#python-tools" class="hover:text-slate-900">Python Tools</a>
-        <a href="#cv-local" class="hover:text-slate-900">CV & Roboflow</a>
-        <a href="#projects" class="hover:text-slate-900">Student Projects</a>
-        <a href="#about" class="hover:text-slate-900">About / Contact</a>
+      <nav class="hidden sm:flex gap-5 text-xs tracking-[0.18em] uppercase text-[#5F6270]">
+        <a href="#agents" class="hover:text-[#0E1F40] gold-underline">Agents</a>
+        <a href="#tools" class="hover:text-[#0E1F40] gold-underline">Agentic Tools</a>
+        <a href="#python-tools" class="hover:text-[#0E1F40] gold-underline">Python Tools</a>
+        <a href="#cv-local" class="hover:text-[#0E1F40] gold-underline">CV & Roboflow</a>
+        <a href="#projects" class="hover:text-[#0E1F40] gold-underline">Student Projects</a>
+        <a href="#about" class="hover:text-[#0E1F40] gold-underline">About</a>
       </nav>
     </div>
   </header>
 
   <main id="top" class="max-w-5xl mx-auto px-4 pb-16">
     <!-- HERO -->
-    <section class="pt-10 sm:pt-16 mb-16 animate-fade-up">
-      <div class="flex flex-col gap-6 sm:gap-8 sm:flex-row sm:items-center">
+    <section class="pt-10 sm:pt-16 mb-16 animate-fade-blur-up">
+      <div class="flex flex-col gap-10 sm:flex-row sm:items-center">
         <div class="flex-1">
-          <p class="text-xs font-medium uppercase tracking-[0.18em] text-slate-500 mb-3">
-            AI Engineering • Agents • Automation • Computer Vision
+          <p class="text-[11px] font-medium uppercase tracking-[0.24em] text-[#8B8E9B] mb-4">
+            Ingénierie • Intelligence artificielle • Agents • Computer vision
           </p>
-          <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight mb-3">
-            AI Engineer in training,<br />focused on agents, automation and computer vision.
+          <h1 class="text-3xl sm:text-4xl font-semibold mb-4 text-[#0E1F40] leading-tight">
+            Engineering student in AI,<br />
+            focused on agents, automation<br />
+            and computer vision.
           </h1>
-          <p class="text-sm sm:text-base text-slate-600 mb-5 max-w-xl">
-            Engineering student building <span class="font-medium text-slate-900">real AI agents</span>
-            (no-code to Python), <span class="font-medium text-slate-900">agentic workflows</span> with tools
-            like Make, n8n and AgentKit, and <span class="font-medium text-slate-900">computer vision pipelines</span>
-            inspired by SaaS products such as Roboflow.
+          <p class="text-sm sm:text-[0.95rem] text-[#4F5260] mb-6 max-w-xl">
+            I build concrete systems where <span class="font-semibold text-[#1E1E1E]">AI agents</span>,
+            <span class="font-semibold text-[#1E1E1E]">automation</span> and
+            <span class="font-semibold text-[#1E1E1E]">computer vision</span> work together.
+            From GPT-based agents to Python tools and local CV pipelines inspired by Roboflow.
           </p>
           <div class="flex flex-wrap gap-3">
-            <a href="#agents"
-               class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg
-                      bg-slate-900 text-white hover:bg-slate-800 transition">
+            <a href="#agents" class="btn-primary-premium">
               View AI Agents
             </a>
-            <a href="#projects"
-               class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg
-                      border border-slate-300 text-slate-800 hover:border-slate-400 transition">
+            <a href="#projects" class="btn-outline-premium">
               See Student Projects
             </a>
           </div>
         </div>
         <div class="flex-1 sm:max-w-xs sm:ml-4">
-          <div class="border border-slate-100 rounded-2xl p-4 sm:p-5 shadow-sm">
-            <p class="text-xs font-medium text-slate-500 mb-2 uppercase tracking-[0.16em]">
-              Snapshot
+          <div class="card-premium p-5">
+            <p class="text-[11px] font-medium text-[#8B8E9B] mb-2 uppercase tracking-[0.18em]">
+              Profile snapshot
             </p>
-            <ul class="text-xs sm:text-sm text-slate-700 space-y-1.5">
-              <li><span class="font-semibold text-slate-900">Agents IA :</span> GPT, n8n, Python custom</li>
-              <li><span class="font-semibold text-slate-900">Agentic tools :</span> Make, n8n, AgentKit, ChatGPT, Google Antigravity</li>
-              <li><span class="font-semibold text-slate-900">Python :</span> automation tools (MSI), CV pipelines</li>
-              <li><span class="font-semibold text-slate-900">Domain :</span> sports / computer vision / automation</li>
+            <ul class="text-xs sm:text-sm text-[#4F5260] space-y-2">
+              <li>
+                <span class="font-semibold text-[#1E1E1E]">AI Agents :</span>
+                GPT (2), n8n agents (3), Python agent (1)
+              </li>
+              <li>
+                <span class="font-semibold text-[#1E1E1E]">Agentic tools :</span>
+                Make, n8n, AgentKit, ChatGPT, Google Antigravity
+              </li>
+              <li>
+                <span class="font-semibold text-[#1E1E1E]">Python :</span>
+                automation tools (MSI), CV pipelines
+              </li>
+              <li>
+                <span class="font-semibold text-[#1E1E1E]">Domain :</span>
+                sports / computer vision / automation
+              </li>
             </ul>
           </div>
         </div>
@@ -87,73 +192,76 @@
     <!-- SECTION: AGENTS IA -->
     <section id="agents" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
+        <h2 class="text-2xl font-semibold text-[#0E1F40]">
           AI Agents – From no-code to custom Python
         </h2>
-        <p class="text-xs uppercase tracking-[0.18em] text-slate-500">
+        <p class="text-[11px] uppercase tracking-[0.18em] text-[#8B8E9B]">
           3 levels • 6+ agents
         </p>
       </div>
-      <p class="text-sm text-slate-600 mb-5 max-w-3xl">
+      <p class="text-sm text-[#4F5260] mb-6 max-w-3xl">
         I design agents with increasing complexity: from simple GPT-based assistants,
         to orchestrated multi-tool workflows in n8n, up to fully custom Python agents
         connected to real tools and APIs.
       </p>
-      <div class="grid gap-5 md:grid-cols-3">
+      <div class="grid gap-6 md:grid-cols-3">
         <!-- Easy -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
-          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
+        <article class="card-premium p-5">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-[#8B8E9B] mb-2">
             Level 1 • Easy
           </p>
-          <h3 class="text-base font-semibold mb-1">GPT-based Agents (2)</h3>
-          <p class="text-sm text-slate-600 mb-3">
+          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
+            GPT-based Agents (2)
+          </h3>
+          <p class="text-sm text-[#4F5260] mb-3">
             Small agents created with GPT (custom instructions + tools) to automate
             focused tasks like document analysis, answer generation or simple decision support.
           </p>
-          <p class="text-xs text-slate-500 mb-3">
+          <p class="text-[11px] text-[#8B8E9B] mb-3">
             Tech: GPT, custom system prompts, structured outputs.
           </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
             Watch demo video
-            <span class="ml-1">▶</span>
           </a>
         </article>
 
         <!-- Medium -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
-          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
+        <article class="card-premium p-5">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-[#8B8E9B] mb-2">
             Level 2 • Medium
           </p>
-          <h3 class="text-base font-semibold mb-1">Agentic workflows in n8n (3)</h3>
-          <p class="text-sm text-slate-600 mb-3">
+          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
+            Agentic workflows in n8n (3)
+          </h3>
+          <p class="text-sm text-[#4F5260] mb-3">
             Agents orchestrated with n8n, combining LLM calls, API calls and condition logic
             to process images, generate content or trigger actions based on AI outputs.
           </p>
-          <p class="text-xs text-slate-500 mb-3">
+          <p class="text-[11px] text-[#8B8E9B] mb-3">
             Tech: n8n, webhooks, OpenAI, HTTP modules, conditional routing.
           </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
             Watch demo videos
-            <span class="ml-1">▶</span>
           </a>
         </article>
 
         <!-- Hard -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
-          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
+        <article class="card-premium p-5">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-[#8B8E9B] mb-2">
             Level 3 • Hard
           </p>
-          <h3 class="text-base font-semibold mb-1">Custom Python Agent (1)</h3>
-          <p class="text-sm text-slate-600 mb-3">
+          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
+            Custom Python Agent (1)
+          </h3>
+          <p class="text-sm text-[#4F5260] mb-3">
             A Python-based agent that calls tools programmatically (APIs, file system,
             CV functions), with its own reasoning loop and structured outputs.
           </p>
-          <p class="text-xs text-slate-500 mb-3">
+          <p class="text-[11px] text-[#8B8E9B] mb-3">
             Tech: Python, OpenAI API, custom tools, orchestration logic.
           </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
             Watch demo video
-            <span class="ml-1">▶</span>
           </a>
         </article>
       </div>
@@ -162,34 +270,33 @@
     <!-- SECTION: ECOSYSTEME AGENTIQUE -->
     <section id="tools" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
+        <h2 class="text-2xl font-semibold text-[#0E1F40]">
           Agentic & automation tools
         </h2>
       </div>
-      <p class="text-sm text-slate-600 mb-4 max-w-3xl">
+      <p class="text-sm text-[#4F5260] mb-4 max-w-3xl">
         I work with a full ecosystem of tools to design agentic workflows, mixing no-code,
-        low-code and code. My objective is to move from prototype to robust, maintainable
+        low-code and code. The objective is to move from fast prototypes to robust, maintainable
         automation.
       </p>
       <div class="flex flex-wrap gap-2">
-        <!-- Each badge = one tool -->
-        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
           Make (Integromat)
         </span>
-        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
           n8n
         </span>
-        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
           AgentKit (OpenAI)
         </span>
-        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
           ChatGPT (Codex, Agent Mode)
         </span>
-        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">
+        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
           Google Antigravity
         </span>
       </div>
-      <p class="text-xs text-slate-500 mt-4 max-w-3xl">
+      <p class="text-[11px] text-[#8B8E9B] mt-4 max-w-3xl">
         Examples: connecting Telegram or web apps to AI agents, chaining perception
         (computer vision) with reasoning and action, or building internal tools for
         repetitive tasks.
@@ -199,45 +306,47 @@
     <!-- SECTION: PYTHON TOOLS (MSI) -->
     <section id="python-tools" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
+        <h2 class="text-2xl font-semibold text-[#0E1F40]">
           Python automation tools (MSI)
         </h2>
       </div>
-      <p class="text-sm text-slate-600 mb-5 max-w-3xl">
+      <p class="text-sm text-[#4F5260] mb-5 max-w-3xl">
         I package Python scripts as MSI installers to make them easy to use for
         non-technical users. The goal is to turn one-off scripts into repeatable,
         reliable internal tools.
       </p>
-      <div class="grid gap-5 md:grid-cols-2">
+      <div class="grid gap-6 md:grid-cols-2">
         <!-- Tool 1 -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
-          <h3 class="text-base font-semibold mb-1">[Python Tool #1]</h3>
-          <p class="text-sm text-slate-600 mb-3">
+        <article class="card-premium p-5">
+          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
+            [Python Tool #1]
+          </h3>
+          <p class="text-sm text-[#4F5260] mb-3">
             Short description of what this tool automates (file processing, dataset
             preparation, report generation, etc.).
           </p>
-          <p class="text-xs text-slate-500 mb-3">
+          <p class="text-[11px] text-[#8B8E9B] mb-3">
             Tech: Python, CLI, MSI packaging.
           </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
             GitHub repository
-            <span class="ml-1">↗</span>
           </a>
         </article>
 
         <!-- Tool 2 -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
-          <h3 class="text-base font-semibold mb-1">[Python Tool #2]</h3>
-          <p class="text-sm text-slate-600 mb-3">
+        <article class="card-premium p-5">
+          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
+            [Python Tool #2]
+          </h3>
+          <p class="text-sm text-[#4F5260] mb-3">
             Another example: e.g. automatic renaming, data cleaning, or integration
             with an external API.
           </p>
-          <p class="text-xs text-slate-500 mb-3">
+          <p class="text-[11px] text-[#8B8E9B] mb-3">
             Tech: Python, scheduling, logging.
           </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-blue-600 hover:text-blue-700">
+          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
             GitHub repository
-            <span class="ml-1">↗</span>
           </a>
         </article>
       </div>
@@ -246,32 +355,36 @@
     <!-- SECTION: RECREATION ROBOFLOW LOCAL -->
     <section id="cv-local" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
+        <h2 class="text-2xl font-semibold text-[#0E1F40]">
           Recreating Roboflow-like features locally
         </h2>
       </div>
-      <p class="text-sm text-slate-600 mb-4 max-w-3xl">
+      <p class="text-sm text-[#4F5260] mb-4 max-w-3xl">
         Inspired by Roboflow, I recreated key dataset transformation features in local
         Python scripts, to keep full control over data and infrastructure.
       </p>
-      <div class="grid gap-5 md:grid-cols-2">
-        <article class="border border-slate-200 rounded-xl p-4">
-          <h3 class="text-base font-semibold mb-1">Batch image flipping</h3>
-          <p class="text-sm text-slate-600 mb-3">
+      <div class="grid gap-6 md:grid-cols-2">
+        <article class="card-premium p-5">
+          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
+            Batch image flipping
+          </h3>
+          <p class="text-sm text-[#4F5260] mb-3">
             Automated horizontal and vertical flips for entire datasets, with consistent
             annotation handling when combined with bounding boxes.
           </p>
-          <p class="text-xs text-slate-500">
+          <p class="text-[11px] text-[#8B8E9B]">
             Tech: Python, Pillow / OpenCV, dataset iteration.
           </p>
         </article>
-        <article class="border border-slate-200 rounded-xl p-4">
-          <h3 class="text-base font-semibold mb-1">Automatic cropping</h3>
-          <p class="text-sm text-slate-600 mb-3">
+        <article class="card-premium p-5">
+          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
+            Automatic cropping
+          </h3>
+          <p class="text-sm text-[#4F5260] mb-3">
             Local pipeline to crop images or regions of interest, similar to Roboflow
             preprocessing, integrated into my computer vision workflows.
           </p>
-          <p class="text-xs text-slate-500">
+          <p class="text-[11px] text-[#8B8E9B]">
             Tech: Python, OpenCV, filesystem automation.
           </p>
         </article>
@@ -281,42 +394,40 @@
     <!-- SECTION: STUDENT PROJECTS -->
     <section id="projects" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
+        <h2 class="text-2xl font-semibold text-[#0E1F40]">
           Student projects – AI inside real workflows
         </h2>
       </div>
-      <div class="space-y-5">
-        <!-- Project 1 -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
-          <h3 class="text-base font-semibold mb-1">
+      <div class="space-y-6">
+        <article class="card-premium p-5">
+          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
             Workflow × AI implementation
           </h3>
-          <p class="text-sm text-slate-600 mb-2">
+          <p class="text-sm text-[#4F5260] mb-2">
             Design of an end-to-end workflow where AI is embedded as a core component
             (decision, prediction or perception), from input data to action.
           </p>
-          <p class="text-xs text-slate-500 mb-2">
+          <p class="text-[11px] text-[#8B8E9B] mb-2">
             Focus: problem framing, tool selection, evaluation of AI’s added value.
           </p>
-          <p class="text-xs text-slate-500">
+          <p class="text-[11px] text-[#8B8E9B]">
             Tech: Python, APIs, agentic orchestration, possibly Make / n8n.
           </p>
         </article>
 
-        <!-- Project 2 -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition">
-          <h3 class="text-base font-semibold mb-1">
+        <article class="card-premium p-5">
+          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
             SaaS concept based on computer vision
           </h3>
-          <p class="text-sm text-slate-600 mb-2">
+          <p class="text-sm text-[#4F5260] mb-2">
             Creation of a SaaS concept leveraging computer vision: from data ingestion,
             through model usage (e.g. YOLO / similar), to value delivered to end users
             in a concrete domain.
           </p>
-          <p class="text-xs text-slate-500 mb-2">
+          <p class="text-[11px] text-[#8B8E9B] mb-2">
             Focus: product thinking, constraints of deploying CV models, user impact.
           </p>
-          <p class="text-xs text-slate-500">
+          <p class="text-[11px] text-[#8B8E9B]">
             Tech: Python, CV libraries, basic backend / automation tooling.
           </p>
         </article>
@@ -326,36 +437,50 @@
     <!-- SECTION: ABOUT / CONTACT -->
     <section id="about" class="mb-10">
       <div class="mb-4 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
+        <h2 class="text-2xl font-semibold text-[#0E1F40]">
           About & contact
         </h2>
       </div>
-      <p class="text-sm text-slate-600 mb-3 max-w-3xl">
+      <p class="text-sm text-[#4F5260] mb-3 max-w-3xl">
         I am an engineering student specialising in AI, agents and computer vision.
         I enjoy building concrete systems: not only models, but full workflows where
         AI interacts with tools, APIs and real data.
       </p>
-      <p class="text-sm text-slate-600 mb-4 max-w-3xl">
+      <p class="text-sm text-[#4F5260] mb-5 max-w-3xl">
         I am currently looking for an internship in AI engineering / agentic AI /
         computer vision, where I can contribute to real products while learning from
         experienced teams.
       </p>
       <div class="flex flex-wrap gap-3 text-sm">
         <a href="mailto:your.email@example.com"
-           class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+           class="inline-flex items-center px-3 py-2 rounded-full border border-[#E2DFD4] hover:border-[#D4A747]">
           your.email@example.com
         </a>
-        <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+        <a href="#"
+           class="inline-flex items-center px-3 py-2 rounded-full border border-[#E2DFD4] hover:border-[#D4A747]">
           LinkedIn
         </a>
-        <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+        <a href="#"
+           class="inline-flex items-center px-3 py-2 rounded-full border border-[#E2DFD4] hover:border-[#D4A747]">
           GitHub
         </a>
-        <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+        <a href="#"
+           class="inline-flex items-center px-3 py-2 rounded-full border border-[#E2DFD4] hover:border-[#D4A747]">
           Download CV (PDF)
         </a>
       </div>
     </section>
   </main>
+
+  <script>
+    // Scroll progress bar
+    const progressBar = document.getElementById("scroll-progress");
+    window.addEventListener("scroll", () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = progress + "%";
+    });
+  </script>
 </body>
 </html>
