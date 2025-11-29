@@ -65,16 +65,15 @@
     .contact-btn span {
       position: absolute;
       top: 50%;
-      left: 1.1rem;
-      transform: translateY(-50%);
+      left: 50%;                       /* centre horizontalement */
+      transform: translate(-50%, -50%); /* recalc centre exact */
       margin: 0;
       font-size: 0.85rem;
       font-weight: 500;
       color: var(--btn-color);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
       transition: left 0.4s ease, color 0.4s ease;
     }
+
     
     .contact-btn svg {
       position: absolute;
@@ -410,18 +409,18 @@
         Grâce à une veille régulière sur les innovations en IA, j’identifie l’IA agentique comme un levier de transformation incontournable. 
         Je comprends que c'est une technologie encore émergente mais je suis convaincu que sa capacité à prendre des initiatives, orchestrer des tâches complexes et adapter ses 
         actions en temps réel bouleversera les méthodes de travail, la gestion des données et l’architecture opérationnelle des entreprises.</p>
-      <div class="flex flex-wrap gap-3 text-sm">
+      <div class="flex flex-wrap gap-3 text-sm mt-6">
         <!-- Email -->
         <a href="mailto:yohan.martin@2026.icam.fr"
            class="contact-btn">
-          <span>Email</span>
+          <span>yohan.martin@2026.icam.fr</span>
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13l8-6.99V6H4zm0 4.25V18h16v-5.75l-7.4 5.16a1 1 0 0 1-1.2 0L4 10.25z"/>
           </svg>
         </a>
       
         <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/TON-PROFIL" target="_blank" rel="noopener"
+        <a href="www.linkedin.com/in/yohan-martin-993505229" target="_blank" rel="noopener"
            class="contact-btn contact-btn--linkedin">
           <span>LinkedIn</span>
           <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
