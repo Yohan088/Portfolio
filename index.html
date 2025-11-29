@@ -46,21 +46,23 @@
        
     /* Boutons de contact type UiVerse */
     .contact-btn {
-      --btn-color: #0f172a;               /* couleur par défaut, overridable par bouton */
+      --btn-color: #0f172a;
       position: relative;
       display: inline-block;
-      width: 12.5rem;                     /* largeur fixe, adapte si besoin */
+      width: 16rem;     /* ← élargi */
+      max-width: 90%;   /* ← responsive */
       height: 2.5rem;
       border-radius: 999px;
       background-color: #ffffff;
       border: 1px solid var(--btn-color);
-      padding: 0;                          /* on gère avec les positions internes */
+      padding: 0;
       overflow: hidden;
       cursor: pointer;
       transition: background-color 0.4s ease, border-color 0.4s ease,
                   box-shadow 0.4s ease;
       box-shadow: 0 0 0 rgba(15, 23, 42, 0);
     }
+
     
     .contact-btn span {
       position: absolute;
@@ -95,7 +97,7 @@
     }
     
     .contact-btn:hover span {
-      left: 0.8rem;
+      left: 45%;
       color: #ffffff;
     }
     
