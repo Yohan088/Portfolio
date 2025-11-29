@@ -2,10 +2,12 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Portfolio IA – Étudiant Ingénieur en quête de stage</title>
+  <title>Portfolio IA – Étudiant Ingénieur en recheche de stage en fin d'études</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Spline Viewer -->
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@latest/build/spline-viewer.js"></script>
   <style>
     html {
       scroll-behavior: smooth;
@@ -45,20 +47,21 @@
 <body class="bg-white text-slate-900 antialiased">
   <!-- INTRO AVEC ANIMATION PLEIN ÉCRAN -->
   <section id="intro" class="relative h-screen w-full overflow-hidden flex items-center justify-center text-white">
-    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.5/build/spline-viewer.js" async></script>
-    <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/et7r0xPp4tIRlkBg/scene.splinecode"></spline-viewer>
+    <spline-viewer
+      loading-anim-type="spinner-small-dark"
+      url="https://prod.spline.design/et7r0xPp4tIRlkBg/scene.splinecode"
+      style="position:absolute; inset:0; width:100%; height:100%;"
+    ></spline-viewer>
     <div class="intro-overlay"></div>
     <div class="relative z-10 max-w-3xl px-6 text-center space-y-4 animate-fade-up">
-      <p class="text-xs uppercase tracking-[0.24em] text-slate-200/80">Étudiant en école d'ingénieur • Stage IA recherché</p>
-      <h1 class="text-4xl sm:text-5xl font-semibold leading-tight">Nom Prénom</h1>
+      <p class="text-xs uppercase tracking-[0.24em] text-slate-200/80">Étudiant en école d'ingénieur • Icam • Stage Intelligence artificielle</p>
+      <h1 class="text-4xl sm:text-5xl font-semibold leading-tight">Yohan MARTIN</h1>
       <p class="text-base sm:text-lg text-slate-100">
-        Portfolio orienté agents IA, automatisation et computer vision. Démonstrations
-        vidéo à venir sur GitHub ; chaque section ci-dessous détaille mes réalisations
-        concrètes et les outils manipulés.
+        Portfolio orienté agents IA, automatisation et computer vision. Chaque section ci-dessous illustre mes réalisations en IA et automatisations ainsi que les outils manipulés qui m'ont permis d'apprendre l'IA agentique.
       </p>
       <div class="flex flex-wrap justify-center gap-3 text-sm">
         <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/10">Agents (GPT → Python)</span>
-        <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/10">Workflows n8n & Make</span>
+        <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/10">Workflows (n8n)</span>
         <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/10">Computer vision appliquée</span>
       </div>
     </div>
@@ -98,11 +101,11 @@
             Agents • Automatisation • Computer Vision
           </p>
           <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight mb-3">
-            Étudiant ingénieur IA, en quête d'un stage pour industrialiser mes agents et pipelines.
+            Étudiant ingénieur, en quête d'un stage pour développer des agents IA et pipelines à forte valeur ajoutée.
           </h2>
           <p class="text-sm sm:text-base text-slate-600 mb-5 max-w-xl">
-            Trois niveaux d'agents (GPT → n8n → Python), une panoplie d'outils agentiques,
-            et des scripts Python packagés pour automatiser la data et la vision par ordinateur.
+            Trois niveaux d'agents (GPT → n8n → Python), une prise en main de différents outils agentiques,
+            et des scripts Python mis en place pour automatiser la data et la vision par ordinateur.
           </p>
           <div class="flex flex-wrap gap-3">
             <a href="#agents"
@@ -125,8 +128,8 @@
             <ul class="text-xs sm:text-sm text-slate-700 space-y-1.5">
               <li><span class="font-semibold text-slate-900">Agents IA :</span> 2 GPT, 3 n8n, 5 Python</li>
               <li><span class="font-semibold text-slate-900">Outils agentiques :</span> Make, n8n, Agent Kit OpenAI, ChatGPT Codex & Mode Agent, Google Antigravity</li>
-              <li><span class="font-semibold text-slate-900">Python :</span> scripts d'automatisation (tri dataset, annotation vidéo, extraction ffmpeg, nettoyage YOLO)</li>
-              <li><span class="font-semibold text-slate-900">Vision :</span> recréation locale de flips & crops façon Roboflow</li>
+              <li><span class="font-semibold text-slate-900">Python :</span> scripts d'automatisation (tri dataset, annotation vidéo, extraction d'images, nettoyage YOLO)</li>
+              <li><span class="font-semibold text-slate-900">Vision :</span> recréation locale des fonctionalités flips & crops façon Roboflow</li>
             </ul>
           </div>
         </div>
@@ -137,7 +140,7 @@
     <section id="agents" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
         <h2 class="text-2xl font-semibold tracking-tight">
-          Agents IA – du no-code aux boucles Python sur mesure
+          Agents IA – du no-code aux scripts Python par vibe-coding
         </h2>
         <p class="text-xs uppercase tracking-[0.18em] text-slate-500">
           3 niveaux • 10 agents
@@ -145,9 +148,8 @@
       </div>
       <p class="text-sm text-slate-600 mb-5 max-w-3xl">
         Développement progressif : assistants GPT simples, agents orchestrés dans n8n,
-        puis cinq versions d'agents Python outillés (Agent_1 → Agent_5) connectés à des
-        APIs, fichiers et fonctions de computer vision. Les démos vidéo seront ajoutées
-        sur le dépôt GitHub.
+        puis cinq niveaux d'agents IA créés en Python. Connexions à des
+        APIs, fichiers et fonctions de computer vision.
       </p>
       <div class="grid gap-5 md:grid-cols-3">
         <!-- Easy -->
@@ -171,11 +173,10 @@
           </p>
           <h3 class="text-base font-semibold mb-1">Workflows n8n (3)</h3>
           <p class="text-sm text-slate-600 mb-3">
-            Trois agents n8n (cf. dossier <span class="font-semibold">workflow_n8n</span>) qui mixent appels OpenAI,
-            webhooks et logique conditionnelle pour traiter images, contenus ou actions selon
+            Trois agents n8n qui mixent appels OpenAI, webhooks et logique conditionnelle pour traiter images, contenus ou actions selon
             les sorties IA.
           </p>
-          <p class="text-xs text-slate-500 mb-3">Technos : n8n, HTTP modules, OpenAI, routage conditionnel.</p>
+          <p class="text-xs text-slate-500 mb-3">Technos : n8n, HTTP modules, OpenAI, routage conditionnel, APIs, base de données vectorielles.</p>
           <span class="inline-flex items-center text-xs font-medium text-blue-600">Démos vidéo en cours d'upload</span>
         </article>
 
@@ -186,11 +187,10 @@
           </p>
           <h3 class="text-base font-semibold mb-1">Agents Python (5 niveaux)</h3>
           <p class="text-sm text-slate-600 mb-3">
-            Une série d'agents codés en Python (Agent_1 → Agent_5) avec boucle de raison-
-            nement, appels d'API, manipulation de fichiers et fonctions CV. Pensés pour être
-            étendus (outils supplémentaires, scoring, monitoring).
+            Une série d'agents codés en Python avec boucle de raisonnement, appels d'API, manipulation de fichiers et fonctions CV. Pensés pour être
+            étendus (outils supplémentaires, scoring, monitoring). L'objectif ultime étant de créer un serveur MCP.
           </p>
-          <p class="text-xs text-slate-500 mb-3">Technos : Python, OpenAI API, orchestration custom, hooks fichiers/APIs.</p>
+          <p class="text-xs text-slate-500 mb-3">Technos : Python, OpenAI API, orchestration custom, hooks fichiers/APIs, serveur MCP.</p>
           <span class="inline-flex items-center text-xs font-medium text-blue-600">Démo vidéo prévue</span>
         </article>
       </div>
@@ -204,10 +204,9 @@
         </h2>
       </div>
       <p class="text-sm text-slate-600 mb-4 max-w-3xl">
-        Passage fluide du no-code au code : je combine outils visuels (Make, n8n), kits
+        Afin d'apprendre en autodidacte l'IA agentique, j'ai ainsi cherché à manipuler différents niveaux d'agents IA dans des environnements différents. (No-code → Low-code → Code) J'ai donc pris en main certains outils d'IA agentique déjà existants : outils visuels (Make, n8n), kits
         orientés actions (Agent Kit OpenAI), et les modes avancés de ChatGPT (Codex,
-        Mode Agent) pour concevoir des workflows robustes. Google Antigravity complète la
-        boîte à outils pour tester de nouveaux patterns agentiques.
+        Mode Agent), ainsi que Google Antigravity, en suivant des tutoriels pour recréer les agents mentionnés précédemment ou en faisant du vibe coding.
       </p>
       <div class="flex flex-wrap gap-2">
         <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">Make (Integromat)</span>
@@ -219,7 +218,7 @@
       </div>
       <p class="text-xs text-slate-500 mt-4 max-w-3xl">
         Exemples : connexion de bots Telegram ou d'applications web à des agents, chaînage
-        de perception (computer vision) avec raisonnement puis action, industrialisation de
+        de perception (computer vision) avec raisonnement puis action, automatisation de
         tâches répétitives pour des équipes non techniques.
       </p>
     </section>
@@ -233,16 +232,15 @@
       </div>
       <p class="text-sm text-slate-600 mb-5 max-w-3xl">
         Pack de scripts pour accélérer la préparation de données et les tâches répétitives.
-        Les exemples ci-dessous viennent du dossier <span class="font-semibold">outils_automatisation</span> ; ils sont pensés
-        pour être utilisables par des non-développeurs (paramètres en en-tête, logs clairs).
+        Ces outils font partis des solutions que j'ai créées pour automatiser les tâches les plus répétitives que j'ai rencontrées au fil de mes projets afin de me concentrer sur le coeur du projet.
       </p>
       <div class="grid gap-5 md:grid-cols-2">
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Tri et copie sélective de dataset</h3>
           <p class="text-sm text-slate-600 mb-3">
             Script interactif OpenCV pour parcourir des images, copier les couples image/.txt
-            vers un dossier « keep » et suivre l'état (copié / non copié). Idéal pour filtrer
-            rapidement un dataset annoté (YOLO).
+            vers un dossier de destination et suivre l'état (copié / non copié). Outil créé pour filtrer
+            rapidement un dataset annoté (YOLO) afin de conserver uniquement les images exploitables.
           </p>
           <p class="text-xs text-slate-500">Fichier : <code>auto_alim_dataset</code></p>
         </article>
@@ -250,9 +248,9 @@
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Annotation vidéo au clavier</h3>
           <p class="text-sm text-slate-600 mb-3">
-            Outil « Annotateur volley » pour extraire des frames, les labelliser (service,
+            Outil pour extraire des frames, les labelliser (service,
             réception, passe, attaque, bloc) et générer un CSV + captures horodatées. Navigation
-            rapide (flèches, J/K) et contrôle de vitesse.
+            rapide (flèches, J/K) et contrôle de vitesse. Permet d'accélérer la création d'un dataset tout en triant les données (logs + dossiers).
           </p>
           <p class="text-xs text-slate-500">Fichier : <code>Annotateur_frame</code></p>
         </article>
@@ -262,7 +260,7 @@
           <p class="text-sm text-slate-600 mb-3">
             Wrapper Python au-dessus d'ffmpeg (via imageio-ffmpeg) pour découper une vidéo
             longue en extraits précis (durée ou intervalle), en copie sans ré-encodage ou en
-            H.264 optimisé.
+            H.264 optimisé. Permet de découper un extrait d'une vidéo très lourde (> 5 Go) en renseignant juste le début et la fin de l'extrait
           </p>
           <p class="text-xs text-slate-500">Fichier : <code>extrait_longue_video</code></p>
         </article>
@@ -270,8 +268,7 @@
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Nettoyage des annotations</h3>
           <p class="text-sm text-slate-600 mb-3">
-            Suppression automatique des fichiers .txt orphelins lorsqu'aucune image n'existe
-            (sécurisé par mode simulation). Permet d'assainir un dataset YOLO avant entraînement.
+            Suppression automatique des fichiers .txt orphelins lorsqu'aucune image n'existe. Permet d'assainir un dataset avant entraînement.
           </p>
           <p class="text-xs text-slate-500">Fichier : <code>suppression_auto</code></p>
         </article>
@@ -285,24 +282,21 @@
           Recréation locale de fonctions Roboflow</h2>
       </div>
       <p class="text-sm text-slate-600 mb-4 max-w-3xl">
-        Pour garder la maîtrise des données, j'ai reconstruit en local des transformations
-        clés façon Roboflow : flips horizontaux/verticaux par lot et crops automatiques des
-        régions d'intérêt, intégrés à mes pipelines computer vision.
+        Pour garder la maîtrise des données, j'ai reconstruit en local, avec python, des transformations
+        clés façon Roboflow (Saas cloud) : flips horizontaux par lot et crops automatiques des
+        régions d'intérêt. Ces outils permettent d'augmenter drastiquement la taille d'un dataset mais ont un coût en crédits non négligeable sur Roboflow, d'où la volonté d'avoir recréé ces fonctionnalités en local.
       </p>
       <div class="grid gap-5 md:grid-cols-2">
         <article class="border border-slate-200 rounded-xl p-4 bg-white">
           <h3 class="text-base font-semibold mb-1">Batch image flipping</h3>
           <p class="text-sm text-slate-600 mb-3">
-            Automatisation des flips avec gestion des annotations, pour augmenter la
-            diversité des datasets sans dépendre d'outils cloud.</p>
-          <p class="text-xs text-slate-500">Tech : Python, Pillow / OpenCV, itération dataset.</p>
+            Automatisation des flips horizontaux avec gestion des annotations, pour augmenter le dataset sans dépendre d'outils cloud.</p>
         </article>
         <article class="border border-slate-200 rounded-xl p-4 bg-white">
           <h3 class="text-base font-semibold mb-1">Automatic cropping</h3>
           <p class="text-sm text-slate-600 mb-3">
             Découpage local d'images ou zones d'intérêt, intégré à mes scripts CV pour
             reproduire la chaîne de préprocessing Roboflow.</p>
-          <p class="text-xs text-slate-500">Tech : Python, OpenCV, automatisation filesystem.</p>
         </article>
       </div>
     </section>
@@ -320,19 +314,17 @@
           <p class="text-sm text-slate-600 mb-2">
             Conception d'un workflow de bout en bout pour un club de volley : collecte et
             traitement des données vidéo, analyse de positionnement des joueuses via computer
-            vision, restitution des insights pour faciliter les décisions terrain.
+            vision, restitution des insights pour faciliter les décisions tactiques et améliorer les performances des athlètes.
           </p>
-          <p class="text-xs text-slate-500">Livrable : outil d'automatisation combinant perception (CV) et reporting actionnable.</p>
+          <p class="text-xs text-slate-500">Livrable : outil d'automatisation combinant perception (CV) et reporting (données exploitables).</p>
         </article>
 
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
-          <h3 class="text-base font-semibold mb-1">Concept de SaaS en computer vision</h3>
+          <h3 class="text-base font-semibold mb-1">Prototype d'un SaaS en computer vision</h3>
           <p class="text-sm text-slate-600 mb-2">
-            Prototype de SaaS basé sur la vision (type YOLO) : ingestion des données, modèle
-            CV pour détecter/segmenter, puis interface utilisateur délivrant les résultats de
-            manière opérationnelle.
+            Prototype de SaaS basé sur la solution ci-dessus, en intégrant une interface utilisateur permettant à un individu non technique de pouvoir prendre en main la solution.
           </p>
-          <p class="text-xs text-slate-500">Objectif : valider l'apport business d'un modèle CV et ses contraintes de déploiement.</p>
+          <p class="text-xs text-slate-500">Objectif : valider l'intégration d'une solution technologique et technique adaptée aux spécificités du client (facilité d'utilisation, intégration technologique aux locaux, transfert de compétences) .</p>
         </article>
       </div>
     </section>
@@ -345,14 +337,14 @@
         </h2>
       </div>
       <p class="text-sm text-slate-600 mb-3 max-w-3xl">
-        Étudiant en école d'ingénieur, passionné par les agents et la vision par ordinateur.
-        Je cherche un stage pour mettre en production des workflows IA mêlant perception,
+        Étudiant en école d'ingénieur à l'Icam de Nantes, passionné par les agents IA et la vision par ordinateur.
+        Je cherche un stage de fin d'études (6 mois à partir de février 2026) pour mettre en place des workflows IA mêlant pertinence,
         raisonnement et action, et apprendre auprès d'équipes expérimentées.
-      </p>
+        Grâce à une veille régulière sur les innovations en IA, j’identifie l’IA agentique comme un levier de transformation incontournable. Je comprends que c'est une technologie encore émergente mais je suis convaincu que sa capacité à prendre des initiatives, orchestrer des tâches complexes et adapter ses actions en temps réel bouleversera les méthodes de travail, la gestion des données et l’architecture opérationnelle des entreprises.</p>
       <div class="flex flex-wrap gap-3 text-sm">
         <a href="mailto:prenom.nom@etu.ecole.fr"
            class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
-          prenom.nom@etu.ecole.fr
+          yohan.martin@2026.icam.fr
         </a>
         <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
           LinkedIn
