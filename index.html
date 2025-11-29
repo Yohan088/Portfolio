@@ -18,7 +18,7 @@
       to   { opacity: 1; transform: translateY(0); }
     }
     .animate-fade-up {
-      animation: fadeUp 0.4s ease-out forwards;
+      animation: fadeUp 1s ease-out forwards;
     }
     /* Plein écran avec l'animation Spline */
     #intro spline-viewer {
@@ -34,6 +34,7 @@
                   radial-gradient(circle at 80% 10%, rgba(56,189,248,0.18), transparent 30%),
                   rgba(15,23,42,0.45);
       backdrop-filter: blur(2px);
+      pointer-events: none;
     }
     .arrow-bounce {
       animation: bounce 1.2s infinite;
