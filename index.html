@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>AI Engineering Portfolio – Premium</title>
+  <title>Portfolio IA – Étudiant Ingénieur en quête de stage</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -10,179 +10,123 @@
     html {
       scroll-behavior: smooth;
     }
-    body {
-      background: #F8F8F6; /* blanc cassé */
-      color: #1E1E1E;      /* anthracite */
+    /* Animation d'entrée simple */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    /* Typo premium : serif pour les titres */
-    h1, h2, h3 {
-      font-family: "Georgia", "Times New Roman", serif;
-      letter-spacing: 0.01em;
+    .animate-fade-up {
+      animation: fadeUp 0.4s ease-out forwards;
     }
-    /* Fade + blur lent */
-    @keyframes fadeBlurUp {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-        filter: blur(4px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-      }
-    }
-    .animate-fade-blur-up {
-      animation: fadeBlurUp 0.6s ease-out forwards;
-    }
-    /* Underline or premium (hover) */
-    .gold-underline {
-      position: relative;
-      display: inline-block;
-    }
-    .gold-underline::after {
-      content: "";
+    /* Plein écran avec l'animation Spline */
+    #intro spline-viewer {
       position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #D4A747, #F0D78B);
-      transition: width 0.35s ease;
-    }
-    .gold-underline:hover::after {
+      inset: 0;
       width: 100%;
+      height: 100%;
     }
-    /* Cards premium : bords doux, ombre subtile */
-    .card-premium {
-      border-radius: 18px;
-      border: 1px solid #E2DFD4;
-      background: rgba(255, 255, 255, 0.82);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    .intro-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 30%),
+                  radial-gradient(circle at 80% 10%, rgba(56,189,248,0.18), transparent 30%),
+                  rgba(15,23,42,0.45);
+      backdrop-filter: blur(2px);
     }
-    .card-premium:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 40px rgba(15, 23, 42, 0.10);
-      border-color: #D4A747;
+    .arrow-bounce {
+      animation: bounce 1.2s infinite;
     }
-    /* Boutons premium */
-    .btn-primary-premium {
-      background: #0E1F40;
-      color: #F8F8F6;
-      border-radius: 999px;
-      padding: 0.7rem 1.5rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      border: 1px solid #0E1F40;
-      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
-    }
-    .btn-primary-premium:hover {
-      background: #142a55;
-      transform: translateY(-1px);
-      box-shadow: 0 10px 30px rgba(14, 31, 64, 0.35);
-    }
-    .btn-outline-premium {
-      border-radius: 999px;
-      padding: 0.7rem 1.5rem;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      border: 1px solid #D4A747;
-      color: #0E1F40;
-      background: transparent;
-      transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease;
-    }
-    .btn-outline-premium:hover {
-      background: #F3E7C5;
-      transform: translateY(-1px);
-    }
-    /* Barre de progression de scroll ultra fine */
-    #scroll-progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #D4A747, #0E1F40);
-      width: 0;
-      z-index: 40;
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(8px); }
     }
   </style>
 </head>
-<body class="antialiased">
-  <!-- Barre de progression scroll -->
-  <div id="scroll-progress"></div>
+<body class="bg-white text-slate-900 antialiased">
+  <!-- INTRO AVEC ANIMATION PLEIN ÉCRAN -->
+  <section id="intro" class="relative h-screen w-full overflow-hidden flex items-center justify-center text-white">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.5/build/spline-viewer.js" async></script>
+    <spline-viewer loading-anim-type="spinner-small-dark" url="https://prod.spline.design/et7r0xPp4tIRlkBg/scene.splinecode"></spline-viewer>
+    <div class="intro-overlay"></div>
+    <div class="relative z-10 max-w-3xl px-6 text-center space-y-4 animate-fade-up">
+      <p class="text-xs uppercase tracking-[0.24em] text-slate-200/80">Étudiant en école d'ingénieur • Stage IA recherché</p>
+      <h1 class="text-4xl sm:text-5xl font-semibold leading-tight">Nom Prénom</h1>
+      <p class="text-base sm:text-lg text-slate-100">
+        Portfolio orienté agents IA, automatisation et computer vision. Démonstrations
+        vidéo à venir sur GitHub ; chaque section ci-dessous détaille mes réalisations
+        concrètes et les outils manipulés.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3 text-sm">
+        <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/10">Agents (GPT → Python)</span>
+        <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/10">Workflows n8n & Make</span>
+        <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/10">Computer vision appliquée</span>
+      </div>
+    </div>
+    <a href="#main-content" class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/80 hover:text-white">
+      <div class="flex flex-col items-center gap-2 text-xs tracking-[0.28em] uppercase">
+        <span>Scroll</span>
+        <svg class="w-5 h-5 arrow-bounce" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 11l7 7 7-7" />
+        </svg>
+      </div>
+    </a>
+  </section>
 
   <!-- Navbar -->
-  <header class="border-b border-[#E2DFD4] sticky top-0 bg-[#F8F8F6]/95 backdrop-blur z-30">
+  <header class="border-b border-slate-100 sticky top-0 bg-white/90 backdrop-blur z-20">
     <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#top" class="font-semibold tracking-tight text-[#0E1F40]">
-        AI Engineering Portfolio
+      <a href="#intro" class="font-semibold tracking-tight text-slate-900">
+        Portfolio IA
       </a>
-      <nav class="hidden sm:flex gap-5 text-xs tracking-[0.18em] uppercase text-[#5F6270]">
-        <a href="#agents" class="hover:text-[#0E1F40] gold-underline">Agents</a>
-        <a href="#tools" class="hover:text-[#0E1F40] gold-underline">Agentic Tools</a>
-        <a href="#python-tools" class="hover:text-[#0E1F40] gold-underline">Python Tools</a>
-        <a href="#cv-local" class="hover:text-[#0E1F40] gold-underline">CV & Roboflow</a>
-        <a href="#projects" class="hover:text-[#0E1F40] gold-underline">Student Projects</a>
-        <a href="#about" class="hover:text-[#0E1F40] gold-underline">About</a>
+      <nav class="hidden sm:flex gap-5 text-sm text-slate-600">
+        <a href="#agents" class="hover:text-slate-900">Agents</a>
+        <a href="#tools" class="hover:text-slate-900">Outils agentiques</a>
+        <a href="#python-tools" class="hover:text-slate-900">Scripts Python</a>
+        <a href="#cv-local" class="hover:text-slate-900">CV & Roboflow local</a>
+        <a href="#projects" class="hover:text-slate-900">Projets étudiants</a>
+        <a href="#about" class="hover:text-slate-900">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main id="top" class="max-w-5xl mx-auto px-4 pb-16">
-    <!-- HERO -->
-    <section class="pt-10 sm:pt-16 mb-16 animate-fade-blur-up">
-      <div class="flex flex-col gap-10 sm:flex-row sm:items-center">
+  <main id="main-content" class="max-w-5xl mx-auto px-4 pb-16">
+    <!-- HERO COURT -->
+    <section class="pt-10 sm:pt-16 mb-16 animate-fade-up">
+      <div class="flex flex-col gap-6 sm:gap-8 sm:flex-row sm:items-center">
         <div class="flex-1">
-          <p class="text-[11px] font-medium uppercase tracking-[0.24em] text-[#8B8E9B] mb-4">
-            Ingénierie • Intelligence artificielle • Agents • Computer vision
+          <p class="text-xs font-medium uppercase tracking-[0.18em] text-slate-500 mb-3">
+            Agents • Automatisation • Computer Vision
           </p>
-          <h1 class="text-3xl sm:text-4xl font-semibold mb-4 text-[#0E1F40] leading-tight">
-            Engineering student in AI,<br />
-            focused on agents, automation<br />
-            and computer vision.
-          </h1>
-          <p class="text-sm sm:text-[0.95rem] text-[#4F5260] mb-6 max-w-xl">
-            I build concrete systems where <span class="font-semibold text-[#1E1E1E]">AI agents</span>,
-            <span class="font-semibold text-[#1E1E1E]">automation</span> and
-            <span class="font-semibold text-[#1E1E1E]">computer vision</span> work together.
-            From GPT-based agents to Python tools and local CV pipelines inspired by Roboflow.
+          <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight mb-3">
+            Étudiant ingénieur IA, en quête d'un stage pour industrialiser mes agents et pipelines.
+          </h2>
+          <p class="text-sm sm:text-base text-slate-600 mb-5 max-w-xl">
+            Trois niveaux d'agents (GPT → n8n → Python), une panoplie d'outils agentiques,
+            et des scripts Python packagés pour automatiser la data et la vision par ordinateur.
           </p>
           <div class="flex flex-wrap gap-3">
-            <a href="#agents" class="btn-primary-premium">
-              View AI Agents
+            <a href="#agents"
+               class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg
+                      bg-slate-900 text-white hover:bg-slate-800 transition">
+              Voir les agents IA
             </a>
-            <a href="#projects" class="btn-outline-premium">
-              See Student Projects
+            <a href="#projects"
+               class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg
+                      border border-slate-300 text-slate-800 hover:border-slate-400 transition">
+              Découvrir les projets étudiants
             </a>
           </div>
         </div>
         <div class="flex-1 sm:max-w-xs sm:ml-4">
-          <div class="card-premium p-5">
-            <p class="text-[11px] font-medium text-[#8B8E9B] mb-2 uppercase tracking-[0.18em]">
-              Profile snapshot
+          <div class="border border-slate-100 rounded-2xl p-4 sm:p-5 shadow-sm bg-white">
+            <p class="text-xs font-medium text-slate-500 mb-2 uppercase tracking-[0.16em]">
+              Aperçu rapide
             </p>
-            <ul class="text-xs sm:text-sm text-[#4F5260] space-y-2">
-              <li>
-                <span class="font-semibold text-[#1E1E1E]">AI Agents :</span>
-                GPT (2), n8n agents (3), Python agent (1)
-              </li>
-              <li>
-                <span class="font-semibold text-[#1E1E1E]">Agentic tools :</span>
-                Make, n8n, AgentKit, ChatGPT, Google Antigravity
-              </li>
-              <li>
-                <span class="font-semibold text-[#1E1E1E]">Python :</span>
-                automation tools (MSI), CV pipelines
-              </li>
-              <li>
-                <span class="font-semibold text-[#1E1E1E]">Domain :</span>
-                sports / computer vision / automation
-              </li>
+            <ul class="text-xs sm:text-sm text-slate-700 space-y-1.5">
+              <li><span class="font-semibold text-slate-900">Agents IA :</span> 2 GPT, 3 n8n, 5 Python</li>
+              <li><span class="font-semibold text-slate-900">Outils agentiques :</span> Make, n8n, Agent Kit OpenAI, ChatGPT Codex & Mode Agent, Google Antigravity</li>
+              <li><span class="font-semibold text-slate-900">Python :</span> scripts d'automatisation (tri dataset, annotation vidéo, extraction ffmpeg, nettoyage YOLO)</li>
+              <li><span class="font-semibold text-slate-900">Vision :</span> recréation locale de flips & crops façon Roboflow</li>
             </ul>
           </div>
         </div>
@@ -192,77 +136,62 @@
     <!-- SECTION: AGENTS IA -->
     <section id="agents" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold text-[#0E1F40]">
-          AI Agents – From no-code to custom Python
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Agents IA – du no-code aux boucles Python sur mesure
         </h2>
-        <p class="text-[11px] uppercase tracking-[0.18em] text-[#8B8E9B]">
-          3 levels • 6+ agents
+        <p class="text-xs uppercase tracking-[0.18em] text-slate-500">
+          3 niveaux • 10 agents
         </p>
       </div>
-      <p class="text-sm text-[#4F5260] mb-6 max-w-3xl">
-        I design agents with increasing complexity: from simple GPT-based assistants,
-        to orchestrated multi-tool workflows in n8n, up to fully custom Python agents
-        connected to real tools and APIs.
+      <p class="text-sm text-slate-600 mb-5 max-w-3xl">
+        Développement progressif : assistants GPT simples, agents orchestrés dans n8n,
+        puis cinq versions d'agents Python outillés (Agent_1 → Agent_5) connectés à des
+        APIs, fichiers et fonctions de computer vision. Les démos vidéo seront ajoutées
+        sur le dépôt GitHub.
       </p>
-      <div class="grid gap-6 md:grid-cols-3">
+      <div class="grid gap-5 md:grid-cols-3">
         <!-- Easy -->
-        <article class="card-premium p-5">
-          <p class="text-[11px] uppercase tracking-[0.18em] text-[#8B8E9B] mb-2">
-            Level 1 • Easy
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
+            Niveau 1 • Facile
           </p>
-          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
-            GPT-based Agents (2)
-          </h3>
-          <p class="text-sm text-[#4F5260] mb-3">
-            Small agents created with GPT (custom instructions + tools) to automate
-            focused tasks like document analysis, answer generation or simple decision support.
+          <h3 class="text-base font-semibold mb-1">Agents GPT (2)</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Assistants configurés dans ChatGPT (prompts + outils) pour analyser des documents
+            et générer des réponses structurées sur des cas métiers ciblés.
           </p>
-          <p class="text-[11px] text-[#8B8E9B] mb-3">
-            Tech: GPT, custom system prompts, structured outputs.
-          </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
-            Watch demo video
-          </a>
+          <p class="text-xs text-slate-500 mb-3">Technos : GPT, consignes système, sorties structurées.</p>
+          <span class="inline-flex items-center text-xs font-medium text-blue-600">Démo vidéo à venir</span>
         </article>
 
         <!-- Medium -->
-        <article class="card-premium p-5">
-          <p class="text-[11px] uppercase tracking-[0.18em] text-[#8B8E9B] mb-2">
-            Level 2 • Medium
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
+            Niveau 2 • Intermédiaire
           </p>
-          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
-            Agentic workflows in n8n (3)
-          </h3>
-          <p class="text-sm text-[#4F5260] mb-3">
-            Agents orchestrated with n8n, combining LLM calls, API calls and condition logic
-            to process images, generate content or trigger actions based on AI outputs.
+          <h3 class="text-base font-semibold mb-1">Workflows n8n (3)</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Trois agents n8n (cf. dossier <span class="font-semibold">workflow_n8n</span>) qui mixent appels OpenAI,
+            webhooks et logique conditionnelle pour traiter images, contenus ou actions selon
+            les sorties IA.
           </p>
-          <p class="text-[11px] text-[#8B8E9B] mb-3">
-            Tech: n8n, webhooks, OpenAI, HTTP modules, conditional routing.
-          </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
-            Watch demo videos
-          </a>
+          <p class="text-xs text-slate-500 mb-3">Technos : n8n, HTTP modules, OpenAI, routage conditionnel.</p>
+          <span class="inline-flex items-center text-xs font-medium text-blue-600">Démos vidéo en cours d'upload</span>
         </article>
 
         <!-- Hard -->
-        <article class="card-premium p-5">
-          <p class="text-[11px] uppercase tracking-[0.18em] text-[#8B8E9B] mb-2">
-            Level 3 • Hard
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
+            Niveau 3 • Avancé
           </p>
-          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
-            Custom Python Agent (1)
-          </h3>
-          <p class="text-sm text-[#4F5260] mb-3">
-            A Python-based agent that calls tools programmatically (APIs, file system,
-            CV functions), with its own reasoning loop and structured outputs.
+          <h3 class="text-base font-semibold mb-1">Agents Python (5 niveaux)</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Une série d'agents codés en Python (Agent_1 → Agent_5) avec boucle de raison-
+            nement, appels d'API, manipulation de fichiers et fonctions CV. Pensés pour être
+            étendus (outils supplémentaires, scoring, monitoring).
           </p>
-          <p class="text-[11px] text-[#8B8E9B] mb-3">
-            Tech: Python, OpenAI API, custom tools, orchestration logic.
-          </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
-            Watch demo video
-          </a>
+          <p class="text-xs text-slate-500 mb-3">Technos : Python, OpenAI API, orchestration custom, hooks fichiers/APIs.</p>
+          <span class="inline-flex items-center text-xs font-medium text-blue-600">Démo vidéo prévue</span>
         </article>
       </div>
     </section>
@@ -270,84 +199,81 @@
     <!-- SECTION: ECOSYSTEME AGENTIQUE -->
     <section id="tools" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold text-[#0E1F40]">
-          Agentic & automation tools
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Écosystème agentique et automatisation
         </h2>
       </div>
-      <p class="text-sm text-[#4F5260] mb-4 max-w-3xl">
-        I work with a full ecosystem of tools to design agentic workflows, mixing no-code,
-        low-code and code. The objective is to move from fast prototypes to robust, maintainable
-        automation.
+      <p class="text-sm text-slate-600 mb-4 max-w-3xl">
+        Passage fluide du no-code au code : je combine outils visuels (Make, n8n), kits
+        orientés actions (Agent Kit OpenAI), et les modes avancés de ChatGPT (Codex,
+        Mode Agent) pour concevoir des workflows robustes. Google Antigravity complète la
+        boîte à outils pour tester de nouveaux patterns agentiques.
       </p>
       <div class="flex flex-wrap gap-2">
-        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
-          Make (Integromat)
-        </span>
-        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
-          n8n
-        </span>
-        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
-          AgentKit (OpenAI)
-        </span>
-        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
-          ChatGPT (Codex, Agent Mode)
-        </span>
-        <span class="px-3 py-1.5 text-xs rounded-full border border-[#E2DFD4] bg-white/70 text-[#1E1E1E]">
-          Google Antigravity
-        </span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">Make (Integromat)</span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">n8n</span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">Agent Kit (OpenAI)</span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">ChatGPT Codex</span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">ChatGPT Mode Agent</span>
+        <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">Google Antigravity</span>
       </div>
-      <p class="text-[11px] text-[#8B8E9B] mt-4 max-w-3xl">
-        Examples: connecting Telegram or web apps to AI agents, chaining perception
-        (computer vision) with reasoning and action, or building internal tools for
-        repetitive tasks.
+      <p class="text-xs text-slate-500 mt-4 max-w-3xl">
+        Exemples : connexion de bots Telegram ou d'applications web à des agents, chaînage
+        de perception (computer vision) avec raisonnement puis action, industrialisation de
+        tâches répétitives pour des équipes non techniques.
       </p>
     </section>
 
-    <!-- SECTION: PYTHON TOOLS (MSI) -->
+    <!-- SECTION: PYTHON TOOLS (AUTOMATISATION) -->
     <section id="python-tools" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold text-[#0E1F40]">
-          Python automation tools (MSI)
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Scripts Python d'automatisation
         </h2>
       </div>
-      <p class="text-sm text-[#4F5260] mb-5 max-w-3xl">
-        I package Python scripts as MSI installers to make them easy to use for
-        non-technical users. The goal is to turn one-off scripts into repeatable,
-        reliable internal tools.
+      <p class="text-sm text-slate-600 mb-5 max-w-3xl">
+        Pack de scripts pour accélérer la préparation de données et les tâches répétitives.
+        Les exemples ci-dessous viennent du dossier <span class="font-semibold">outils_automatisation</span> ; ils sont pensés
+        pour être utilisables par des non-développeurs (paramètres en en-tête, logs clairs).
       </p>
-      <div class="grid gap-6 md:grid-cols-2">
-        <!-- Tool 1 -->
-        <article class="card-premium p-5">
-          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
-            [Python Tool #1]
-          </h3>
-          <p class="text-sm text-[#4F5260] mb-3">
-            Short description of what this tool automates (file processing, dataset
-            preparation, report generation, etc.).
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <h3 class="text-base font-semibold mb-1">Tri et copie sélective de dataset</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Script interactif OpenCV pour parcourir des images, copier les couples image/.txt
+            vers un dossier « keep » et suivre l'état (copié / non copié). Idéal pour filtrer
+            rapidement un dataset annoté (YOLO).
           </p>
-          <p class="text-[11px] text-[#8B8E9B] mb-3">
-            Tech: Python, CLI, MSI packaging.
-          </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
-            GitHub repository
-          </a>
+          <p class="text-xs text-slate-500">Fichier : <code>auto_alim_dataset</code></p>
         </article>
 
-        <!-- Tool 2 -->
-        <article class="card-premium p-5">
-          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
-            [Python Tool #2]
-          </h3>
-          <p class="text-sm text-[#4F5260] mb-3">
-            Another example: e.g. automatic renaming, data cleaning, or integration
-            with an external API.
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <h3 class="text-base font-semibold mb-1">Annotation vidéo au clavier</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Outil « Annotateur volley » pour extraire des frames, les labelliser (service,
+            réception, passe, attaque, bloc) et générer un CSV + captures horodatées. Navigation
+            rapide (flèches, J/K) et contrôle de vitesse.
           </p>
-          <p class="text-[11px] text-[#8B8E9B] mb-3">
-            Tech: Python, scheduling, logging.
+          <p class="text-xs text-slate-500">Fichier : <code>Annotateur_frame</code></p>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <h3 class="text-base font-semibold mb-1">Extraction rapide de clips</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Wrapper Python au-dessus d'ffmpeg (via imageio-ffmpeg) pour découper une vidéo
+            longue en extraits précis (durée ou intervalle), en copie sans ré-encodage ou en
+            H.264 optimisé.
           </p>
-          <a href="#" class="inline-flex items-center text-xs font-medium text-[#0E1F40] gold-underline">
-            GitHub repository
-          </a>
+          <p class="text-xs text-slate-500">Fichier : <code>extrait_longue_video</code></p>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <h3 class="text-base font-semibold mb-1">Nettoyage des annotations</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Suppression automatique des fichiers .txt orphelins lorsqu'aucune image n'existe
+            (sécurisé par mode simulation). Permet d'assainir un dataset YOLO avant entraînement.
+          </p>
+          <p class="text-xs text-slate-500">Fichier : <code>suppression_auto</code></p>
         </article>
       </div>
     </section>
@@ -355,38 +281,28 @@
     <!-- SECTION: RECREATION ROBOFLOW LOCAL -->
     <section id="cv-local" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold text-[#0E1F40]">
-          Recreating Roboflow-like features locally
-        </h2>
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Recréation locale de fonctions Roboflow</h2>
       </div>
-      <p class="text-sm text-[#4F5260] mb-4 max-w-3xl">
-        Inspired by Roboflow, I recreated key dataset transformation features in local
-        Python scripts, to keep full control over data and infrastructure.
+      <p class="text-sm text-slate-600 mb-4 max-w-3xl">
+        Pour garder la maîtrise des données, j'ai reconstruit en local des transformations
+        clés façon Roboflow : flips horizontaux/verticaux par lot et crops automatiques des
+        régions d'intérêt, intégrés à mes pipelines computer vision.
       </p>
-      <div class="grid gap-6 md:grid-cols-2">
-        <article class="card-premium p-5">
-          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
-            Batch image flipping
-          </h3>
-          <p class="text-sm text-[#4F5260] mb-3">
-            Automated horizontal and vertical flips for entire datasets, with consistent
-            annotation handling when combined with bounding boxes.
-          </p>
-          <p class="text-[11px] text-[#8B8E9B]">
-            Tech: Python, Pillow / OpenCV, dataset iteration.
-          </p>
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="border border-slate-200 rounded-xl p-4 bg-white">
+          <h3 class="text-base font-semibold mb-1">Batch image flipping</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Automatisation des flips avec gestion des annotations, pour augmenter la
+            diversité des datasets sans dépendre d'outils cloud.</p>
+          <p class="text-xs text-slate-500">Tech : Python, Pillow / OpenCV, itération dataset.</p>
         </article>
-        <article class="card-premium p-5">
-          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
-            Automatic cropping
-          </h3>
-          <p class="text-sm text-[#4F5260] mb-3">
-            Local pipeline to crop images or regions of interest, similar to Roboflow
-            preprocessing, integrated into my computer vision workflows.
-          </p>
-          <p class="text-[11px] text-[#8B8E9B]">
-            Tech: Python, OpenCV, filesystem automation.
-          </p>
+        <article class="border border-slate-200 rounded-xl p-4 bg-white">
+          <h3 class="text-base font-semibold mb-1">Automatic cropping</h3>
+          <p class="text-sm text-slate-600 mb-3">
+            Découpage local d'images ou zones d'intérêt, intégré à mes scripts CV pour
+            reproduire la chaîne de préprocessing Roboflow.</p>
+          <p class="text-xs text-slate-500">Tech : Python, OpenCV, automatisation filesystem.</p>
         </article>
       </div>
     </section>
@@ -394,42 +310,29 @@
     <!-- SECTION: STUDENT PROJECTS -->
     <section id="projects" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold text-[#0E1F40]">
-          Student projects – AI inside real workflows
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Projets étudiants – IA ancrée dans un workflow réel
         </h2>
       </div>
-      <div class="space-y-6">
-        <article class="card-premium p-5">
-          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
-            Workflow × AI implementation
-          </h3>
-          <p class="text-sm text-[#4F5260] mb-2">
-            Design of an end-to-end workflow where AI is embedded as a core component
-            (decision, prediction or perception), from input data to action.
+      <div class="space-y-5">
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <h3 class="text-base font-semibold mb-1">Workflow complet + IA intégrée</h3>
+          <p class="text-sm text-slate-600 mb-2">
+            Conception d'un workflow de bout en bout pour un club de volley : collecte et
+            traitement des données vidéo, analyse de positionnement des joueuses via computer
+            vision, restitution des insights pour faciliter les décisions terrain.
           </p>
-          <p class="text-[11px] text-[#8B8E9B] mb-2">
-            Focus: problem framing, tool selection, evaluation of AI’s added value.
-          </p>
-          <p class="text-[11px] text-[#8B8E9B]">
-            Tech: Python, APIs, agentic orchestration, possibly Make / n8n.
-          </p>
+          <p class="text-xs text-slate-500">Livrable : outil d'automatisation combinant perception (CV) et reporting actionnable.</p>
         </article>
 
-        <article class="card-premium p-5">
-          <h3 class="text-base font-semibold mb-2 text-[#0E1F40]">
-            SaaS concept based on computer vision
-          </h3>
-          <p class="text-sm text-[#4F5260] mb-2">
-            Creation of a SaaS concept leveraging computer vision: from data ingestion,
-            through model usage (e.g. YOLO / similar), to value delivered to end users
-            in a concrete domain.
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <h3 class="text-base font-semibold mb-1">Concept de SaaS en computer vision</h3>
+          <p class="text-sm text-slate-600 mb-2">
+            Prototype de SaaS basé sur la vision (type YOLO) : ingestion des données, modèle
+            CV pour détecter/segmenter, puis interface utilisateur délivrant les résultats de
+            manière opérationnelle.
           </p>
-          <p class="text-[11px] text-[#8B8E9B] mb-2">
-            Focus: product thinking, constraints of deploying CV models, user impact.
-          </p>
-          <p class="text-[11px] text-[#8B8E9B]">
-            Tech: Python, CV libraries, basic backend / automation tooling.
-          </p>
+          <p class="text-xs text-slate-500">Objectif : valider l'apport business d'un modèle CV et ses contraintes de déploiement.</p>
         </article>
       </div>
     </section>
@@ -437,50 +340,31 @@
     <!-- SECTION: ABOUT / CONTACT -->
     <section id="about" class="mb-10">
       <div class="mb-4 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold text-[#0E1F40]">
-          About & contact
+        <h2 class="text-2xl font-semibold tracking-tight">
+          À propos & contact
         </h2>
       </div>
-      <p class="text-sm text-[#4F5260] mb-3 max-w-3xl">
-        I am an engineering student specialising in AI, agents and computer vision.
-        I enjoy building concrete systems: not only models, but full workflows where
-        AI interacts with tools, APIs and real data.
-      </p>
-      <p class="text-sm text-[#4F5260] mb-5 max-w-3xl">
-        I am currently looking for an internship in AI engineering / agentic AI /
-        computer vision, where I can contribute to real products while learning from
-        experienced teams.
+      <p class="text-sm text-slate-600 mb-3 max-w-3xl">
+        Étudiant en école d'ingénieur, passionné par les agents et la vision par ordinateur.
+        Je cherche un stage pour mettre en production des workflows IA mêlant perception,
+        raisonnement et action, et apprendre auprès d'équipes expérimentées.
       </p>
       <div class="flex flex-wrap gap-3 text-sm">
-        <a href="mailto:your.email@example.com"
-           class="inline-flex items-center px-3 py-2 rounded-full border border-[#E2DFD4] hover:border-[#D4A747]">
-          your.email@example.com
+        <a href="mailto:prenom.nom@etu.ecole.fr"
+           class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+          prenom.nom@etu.ecole.fr
         </a>
-        <a href="#"
-           class="inline-flex items-center px-3 py-2 rounded-full border border-[#E2DFD4] hover:border-[#D4A747]">
+        <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
           LinkedIn
         </a>
-        <a href="#"
-           class="inline-flex items-center px-3 py-2 rounded-full border border-[#E2DFD4] hover:border-[#D4A747]">
+        <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
           GitHub
         </a>
-        <a href="#"
-           class="inline-flex items-center px-3 py-2 rounded-full border border-[#E2DFD4] hover:border-[#D4A747]">
-          Download CV (PDF)
+        <a href="#" class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:border-slate-400">
+          Télécharger le CV (PDF)
         </a>
       </div>
     </section>
   </main>
-
-  <script>
-    // Scroll progress bar
-    const progressBar = document.getElementById("scroll-progress");
-    window.addEventListener("scroll", () => {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progressBar.style.width = progress + "%";
-    });
-  </script>
 </body>
 </html>
