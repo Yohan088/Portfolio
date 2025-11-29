@@ -43,35 +43,6 @@
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(8px); }
     }
-    .glass {
-      background: rgba(255, 255, 255, 0.10);
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      backdrop-filter: blur(20px) saturate(180%);
-      -webkit-backdrop-filter: blur(20px) saturate(180%);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.08);
-      border-radius: 1rem;
-    
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .glass::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at 20% 30%,
-        rgba(255,255,255,0.25),
-        transparent 60%
-      );
-      mix-blend-mode: overlay;
-      animation: liquidMove 8s infinite alternate ease-in-out;
-    }
-    
-    @keyframes liquidMove {
-      0%   { transform: translate(-10%, -10%) scale(1); }
-      100% { transform: translate(10%, 10%) scale(1.2); }
-    }
 
 
   </style>
@@ -87,7 +58,7 @@
       <p class="text-base sm:text-lg text-slate-100">
         Portfolio orienté agents IA, automatisation et computer vision. Chaque section ci-dessous illustre mes réalisations en IA et automatisations ainsi que les outils manipulés qui m'ont permis d'apprendre l'IA agentique.
       </p>
-      <div class="glass flex flex-wrap justify-center gap-3 text-sm p-4 rounded-2xl">
+      <div class="glass flex flex-wrap justify-center gap-3 text-sm">
         <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/20 backdrop-blur-md">Agents (GPT → Python)</span>
         <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/20 backdrop-blur-md">Workflows (n8n)</span>
         <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/20 backdrop-blur-md">Computer vision appliquée</span>
