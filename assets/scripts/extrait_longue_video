@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+
+import os, subprocess, sys
+from pathlib import Path
+try:
+    import imageio_ffmpeg as iioff  # pip install imageio-ffmpeg
+except ImportError:
+    print("Installe: pip install imageio-ffmpeg", file=sys.stderr); sys.exit(1)
+
+# ===== CONFIG À RENSEIGNER =====
+INPUT    = r"C:\Users\2026.martin.yohan\Videos\source.mp4"   # str ou Path ok
+OUTPUT   = r"C:\Users\2026.martin.yohan\Videos\extrait.mp4"  # str ou Path ok; "" -> auto
+START    = "00:01:23"
+END      = None
+DURATION = "12.5"
+COPY     = False
+CRF      = 20
+COPY_SUBS= False
+MAP_ALL  = False
+# ===============================
+
+def norm_in_out():
+    inp = Path(INPUT) if not isinstance(INPUT, Path) else INPUT
+    out = OUTPUT
+    if not out:
+        base = inp.with_suffix("")
+        out = str(base) + "_clip" + (inp.suffix or ".mp4")
+    out = Path(out) if not isinstance(out, Path) else out
+    return inp, out
+
+def build_cmd(ffmpeg, inp: Path, out: Path):
+    cmd = [ffmpeg, "-hide_banner", "-loglevel", "error", "-y"]
+    if COPY:
+        if START: cmd += ["-ss", START]
+        cmd += ["-i", str(inp)]
+        if DURATION: cmd += ["-t", DURATION]
+        elif END:    cmd += ["-to", END]
+        cmd += ["-c", "copy"]
+        if not MAP_ALL: cmd += ["-map", "0:v:0", "-map", "0:a:0?"]
+    else:
+        cmd += ["-i", str(inp)]
+        if START:   cmd += ["-ss", START]
+        if DURATION: cmd += ["-t", DURATION]
+        elif END:    cmd += ["-to", END]
+        cmd += ["-c:v","libx264","-preset","veryfast","-crf",str(CRF),
+                "-c:a","aac","-b:a","160k","-movflags","+faststart"]
+        cmd += (["-c:s","copy"] if COPY_SUBS else ["-sn"])
+        if not MAP_ALL: cmd += ["-map","0:v:0","-map","0:a:0?"]
+    if MAP_ALL: cmd += ["-map","0"]
+    cmd += [str(out)]
+    return cmd
+
+def main():
+    inp, out = norm_in_out()
+    if not inp.exists():
+        print(f"Erreur: fichier introuvable: {inp}", file=sys.stderr); sys.exit(1)
+    if not (DURATION or (START and END)):
+        print("Spécifie DURATION ou le duo START et END.", file=sys.stderr); sys.exit(1)
+
+    ffmpeg = iioff.get_ffmpeg_exe()  # binaire local, aucune invite
+    cmd = build_cmd(ffmpeg, inp, out)
+    try:
+        subprocess.run(cmd, check=True)
+    except subprocess.CalledProcessError:
+        print("ffmpeg a échoué. Commande:", " ".join(cmd), file=sys.stderr); sys.exit(1)
+    print(f"OK: extrait créé -> {out}")
+
+if __name__ == "__main__":
+    main()
