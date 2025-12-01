@@ -349,11 +349,15 @@
           Scripts Python d'automatisation
         </h2>
       </div>
+    
       <p class="text-sm text-slate-600 mb-5 max-w-3xl">
         Pack de scripts pour accélérer la préparation de données et les tâches répétitives.
         Ces outils font partis des solutions que j'ai créées pour automatiser les tâches les plus répétitives que j'ai rencontrées au fil de mes projets afin de me concentrer sur le coeur des problématiques.
       </p>
+    
       <div class="grid gap-5 md:grid-cols-2">
+    
+        <!-- Script 1 -->
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Tri et copie sélective de dataset</h3>
           <p class="text-sm text-slate-600 mb-3">
@@ -361,9 +365,17 @@
             vers un dossier de destination et suivre l'état (copié / non copié). Outil créé pour filtrer
             rapidement un dataset annoté afin de conserver uniquement les images exploitables.
           </p>
-          <p class="text-xs text-slate-500">Fichier : <code>auto_alim_dataset</code></p>
+          <p class="text-xs text-slate-500 mb-2">
+            Fichier&nbsp;: <code>auto_alim_dataset.py</code>
+          </p>
+          <a href="assets/scripts/auto_alim_dataset.py"
+             download
+             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
+            Télécharger le script
+          </a>
         </article>
-
+    
+        <!-- Script 2 -->
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Annotation vidéo au clavier</h3>
           <p class="text-sm text-slate-600 mb-3">
@@ -371,31 +383,56 @@
             réception, passe, attaque, bloc) et générer un CSV + captures horodatées grâce uniquement aux touches clavier. Navigation
             rapide (flèches, J/K pour +3s/-3s) et contrôle de vitesse. Permet d'accélérer la création d'un dataset tout en triant les données (logs + dossiers).
           </p>
-          <p class="text-xs text-slate-500">Fichier : <code>Annotateur_frame</code></p>
+          <p class="text-xs text-slate-500 mb-2">
+            Fichier&nbsp;: <code>Annotateur_frame.py</code>
+          </p>
+          <a href="assets/scripts/Annotateur_frame.py"
+             download
+             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
+            Télécharger le script
+          </a>
         </article>
-
+    
+        <!-- Script 3 -->
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Extraction rapide de clips</h3>
           <p class="text-sm text-slate-600 mb-3">
             Wrapper Python au-dessus d'ffmpeg (via imageio-ffmpeg) pour découper une vidéo
-            longue en extraits précis (durée ou intervalle). Programme qui est simple mais indispensable pour découper un extrait d'une vidéo trop lourde pour des outils en ligne (> 5 Go), en renseignant juste le début et la fin de l'extrait.
+            longue en extraits précis (durée ou intervalle). Même si c'est une fonctionnalité qui semble simple, il devient cependant indispensable pour découper un extrait d'une vidéo trop lourde (> 5 Go, blocages si l'on passe par des outils en ligne).
           </p>
-          <p class="text-xs text-slate-500">Fichier : <code>extrait_longue_video</code></p>
+          <p class="text-xs text-slate-500 mb-2">
+            Fichier&nbsp;: <code>extrait_longue_video.py</code>
+          </p>
+          <a href="assets/scripts/extrait_longue_video.py"
+             download
+             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
+            Télécharger le script
+          </a>
         </article>
-
+    
+        <!-- Script 4 -->
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Nettoyage des annotations</h3>
           <p class="text-sm text-slate-600 mb-3">
             Suppression automatique des fichiers .txt orphelins lorsqu'aucune image n'existe. Le script vient comparer deux dossiers, l'un contenant des images, l'autre contenant des fichiers textes associés. 
-            Si l'image n'est pas présente, son fichier est alors supprimé dans l'autre dossier grâce au script.
+            Si l'image n'est pas présente, son fichier est alors supprimé dans l'autre dossier.
           </p>
           <p class="text-sm text-slate-600 mb-3">
             Permet d'assainir un dataset avant entraînement.
           </p>
-          <p class="text-xs text-slate-500">Fichier : <code>suppression_auto</code></p>
+          <p class="text-xs text-slate-500 mb-2">
+            Fichier&nbsp;: <code>suppression_auto.py</code>
+          </p>
+          <a href="assets/scripts/suppression_auto.py"
+             download
+             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
+            Télécharger le script
+          </a>
         </article>
+    
       </div>
     </section>
+
 
     <!-- SECTION: RECREATION ROBOFLOW LOCAL -->
     <section id="cv-local" class="mb-16">
