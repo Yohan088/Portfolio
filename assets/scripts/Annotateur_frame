@@ -19,9 +19,9 @@ CSV colonnes :
 """
 
 # ========= PARAMÈTRES À PERSONNALISER =========
-VIDEO_PATH    = r"C:\Users\2026.MARTIN.Yohan\Downloads\Matchs\ch4_Z3_410129.mp4"
-OUTPUT_DIR    = r"C:\Users\2026.MARTIN.Yohan\Downloads\Matchs\extraction_touches\ch4_Z3_410129"
-OUTPUT_CSV    = r"C:\Users\2026.MARTIN.Yohan\Downloads\Matchs\extraction_touches\ch4_Z3_410129\annotations_frames.csv"
+VIDEO_PATH    = r"C:\Users\XXXXX.mp4"
+OUTPUT_DIR    = r"C:\Users\YYYYY"
+OUTPUT_CSV    = r"C:\Users\ZZZZZ.csv"
 IMG_FORMAT    = "png"              # "png" ou "jpg"
 INITIAL_SPEED = 1.0                # 0.5, 1.0, 6
 START_AT      = "00:11:10"         # HH:MM:SS -> point de départ réel dans la vidéo
