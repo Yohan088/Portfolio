@@ -8,8 +8,8 @@ except ImportError:
     print("Installe: pip install imageio-ffmpeg", file=sys.stderr); sys.exit(1)
 
 # ===== CONFIG À RENSEIGNER =====
-INPUT    = r"C:\Users\2026.martin.yohan\Videos\source.mp4"   # str ou Path ok
-OUTPUT   = r"C:\Users\2026.martin.yohan\Videos\extrait.mp4"  # str ou Path ok; "" -> auto
+INPUT    = r"C:\Users\source.mp4"   # str ou Path ok
+OUTPUT   = r"C:\Users\extrait.mp4"  # str ou Path ok; "" -> auto
 START    = "00:01:23"
 END      = None
 DURATION = "12.5"
