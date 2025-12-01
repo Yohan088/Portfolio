@@ -357,7 +357,7 @@
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Tri et copie sélective de dataset</h3>
           <p class="text-sm text-slate-600 mb-3">
-            Script interactif OpenCV pour parcourir des images, copier les couples image/.txt
+            Script pour parcourir des images, copier les couples image/.txt
             vers un dossier de destination et suivre l'état (copié / non copié). Outil créé pour filtrer
             rapidement un dataset annoté afin de conserver uniquement les images exploitables.
           </p>
@@ -368,8 +368,8 @@
           <h3 class="text-base font-semibold mb-1">Annotation vidéo au clavier</h3>
           <p class="text-sm text-slate-600 mb-3">
             Outil pour extraire des frames, les labelliser (service,
-            réception, passe, attaque, bloc) et générer un CSV + captures horodatées. Navigation
-            rapide (flèches, J/K) et contrôle de vitesse. Permet d'accélérer la création d'un dataset tout en triant les données (logs + dossiers).
+            réception, passe, attaque, bloc) et générer un CSV + captures horodatées grâce uniquement aux touches clavier. Navigation
+            rapide (flèches, J/K pour +3s/-3s) et contrôle de vitesse. Permet d'accélérer la création d'un dataset tout en triant les données (logs + dossiers).
           </p>
           <p class="text-xs text-slate-500">Fichier : <code>Annotateur_frame</code></p>
         </article>
@@ -378,8 +378,7 @@
           <h3 class="text-base font-semibold mb-1">Extraction rapide de clips</h3>
           <p class="text-sm text-slate-600 mb-3">
             Wrapper Python au-dessus d'ffmpeg (via imageio-ffmpeg) pour découper une vidéo
-            longue en extraits précis (durée ou intervalle), en copie sans ré-encodage ou en
-            H.264 optimisé. Programme qui est simple mais indispensable pour découper un extrait d'une vidéo trop lourde pour des outils en ligne (> 5 Go), en renseignant juste le début et la fin de l'extrait
+            longue en extraits précis (durée ou intervalle). Programme qui est simple mais indispensable pour découper un extrait d'une vidéo trop lourde pour des outils en ligne (> 5 Go), en renseignant juste le début et la fin de l'extrait.
           </p>
           <p class="text-xs text-slate-500">Fichier : <code>extrait_longue_video</code></p>
         </article>
@@ -387,7 +386,11 @@
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Nettoyage des annotations</h3>
           <p class="text-sm text-slate-600 mb-3">
-            Suppression automatique des fichiers .txt orphelins lorsqu'aucune image n'existe. Permet d'assainir un dataset avant entraînement.
+            Suppression automatique des fichiers .txt orphelins lorsqu'aucune image n'existe. Le script vient comparer deux dossiers, l'un contenant des images, l'autre contenant des fichiers textes associés. 
+            Si l'image n'est pas présente, son fichier est alors supprimé dans l'autre dossier grâce au script.
+          </p>
+          <p class="text-sm text-slate-600 mb-3">
+            Permet d'assainir un dataset avant entraînement.
           </p>
           <p class="text-xs text-slate-500">Fichier : <code>suppression_auto</code></p>
         </article>
