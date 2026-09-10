@@ -5,46 +5,73 @@
   <title>Portfolio Yohan Martin</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Spline Viewer -->
-  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.5/build/spline-viewer.js" async></script>
+
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    /* Animation d'entrée simple */
+    html { scroll-behavior: smooth; }
+
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
+      to { opacity: 1; transform: translateY(0); }
     }
-    .animate-fade-up {
-      animation: fadeUp 1s ease-out forwards;
-    }
-    /* Plein écran avec l'animation Spline */
-    #intro spline-viewer {
+    .animate-fade-up { animation: fadeUp 1s ease-out forwards; }
+
+    /* Intro légère : remplace le viewer Spline/WebGL pour améliorer les performances */
+    .intro-bg {
       position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+      inset: -8%;
+      background:
+        radial-gradient(circle at 18% 25%, rgba(56,189,248,.50), transparent 26%),
+        radial-gradient(circle at 78% 20%, rgba(99,102,241,.42), transparent 30%),
+        radial-gradient(circle at 62% 78%, rgba(14,165,233,.28), transparent 32%),
+        radial-gradient(circle at 35% 65%, rgba(168,85,247,.16), transparent 28%),
+        linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%);
+      transform: scale(1.08);
+      animation: introDrift 12s ease-in-out infinite alternate;
     }
+
+    .intro-bg::before,
+    .intro-bg::after {
+      content: "";
+      position: absolute;
+      width: 36rem;
+      height: 36rem;
+      border-radius: 999px;
+      filter: blur(70px);
+      opacity: .25;
+    }
+    .intro-bg::before {
+      top: 5%;
+      left: 8%;
+      background: #38bdf8;
+    }
+    .intro-bg::after {
+      right: 8%;
+      bottom: 0;
+      background: #6366f1;
+    }
+
+    @keyframes introDrift {
+      from { transform: scale(1.08) translate3d(-1.5%, -1%, 0); }
+      to { transform: scale(1.12) translate3d(1.5%, 1%, 0); }
+    }
+
     .intro-overlay {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 30%),
-                  radial-gradient(circle at 80% 10%, rgba(56,189,248,0.18), transparent 30%),
-                  rgba(15,23,42,0.45);
-      backdrop-filter: blur(2px);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.12), transparent 30%),
+        radial-gradient(circle at 80% 10%, rgba(56,189,248,.18), transparent 30%),
+        rgba(15,23,42,.38);
       pointer-events: none;
     }
-    .arrow-bounce {
-      animation: bounce 1.2s infinite;
-    }
+
+    .arrow-bounce { animation: bounce 1.2s infinite; }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(8px); }
     }
-       
+
     /* Boutons de contact type UiVerse */
     .contact-btn {
       --btn-color: #0f172a;
@@ -52,26 +79,23 @@
       display: inline-block;
       width: auto;
       min-width: 16rem;
-      padding-left: 1.5rem;
-      padding-right: 2.5rem;
-
+      padding: 0 2.5rem 0 1.5rem;
       height: 2.5rem;
       border-radius: 999px;
       background-color: #ffffff;
       border: 1px solid var(--btn-color);
       overflow: hidden;
       cursor: pointer;
-      transition: background-color 0.4s ease, border-color 0.4s ease,
-                  box-shadow 0.4s ease;
+      white-space: nowrap;
+      transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
       box-shadow: 0 0 0 rgba(15, 23, 42, 0);
     }
 
-    
     .contact-btn span {
       position: absolute;
       top: 50%;
-      left: 50%;                       /* centre horizontalement */
-      transform: translate(-50%, -50%); /* recalc centre exact */
+      left: 50%;
+      transform: translate(-50%, -50%);
       margin: 0;
       font-size: 0.85rem;
       font-weight: 500;
@@ -79,7 +103,6 @@
       transition: left 0.4s ease, color 0.4s ease;
     }
 
-    
     .contact-btn svg {
       position: absolute;
       top: 50%;
@@ -91,50 +114,44 @@
       width: 1rem;
       fill: #ffffff;
     }
-    
-    /* Effets hover */
+
     .contact-btn:hover {
       background-color: var(--btn-color);
       border-color: var(--btn-color);
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.35);
     }
-    
-    .contact-btn:hover span {
-      left: 45%;
-      color: #ffffff;
-    }
-    
-    .contact-btn:hover svg {
-      opacity: 1;
-      transform: translateY(-50%) translateX(1px);
-    }
-    
-    /* Variantes de couleur (LinkedIn / GitHub / CV) */
+    .contact-btn:hover span { left: 45%; color: #ffffff; }
+    .contact-btn:hover svg { opacity: 1; transform: translateY(-50%) translateX(1px); }
     .contact-btn--linkedin { --btn-color: #0077b5; }
-    .contact-btn--github   { --btn-color: #111827; }
-    .contact-btn--cv       { --btn-color: #16a34a; } /* vert doux, à adapter si tu veux */
+    .contact-btn--cv { --btn-color: #16a34a; }
 
-
-
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .intro-bg, .animate-fade-up, .arrow-bounce { animation: none; }
+    }
   </style>
 </head>
+
 <body class="bg-white text-slate-900 antialiased">
-  <!-- INTRO AVEC ANIMATION PLEIN ÉCRAN -->
+
+  <!-- INTRO -->
   <section id="intro" class="relative h-screen w-full overflow-hidden flex items-center justify-center text-white">
-    <spline-viewer loading-anim-type="none" url="https://prod.spline.design/et74hXNTJ7k8fm2g/scene.splinecode"><img src="data:image/png;base64,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" alt="Spline preview" style="width: 100%; height: 100%;"/></spline-viewer>
+    <div class="intro-bg" aria-hidden="true"></div>
     <div class="intro-overlay"></div>
+
     <div class="relative z-10 max-w-3xl px-6 text-center space-y-8 animate-fade-up">
-      <p class="text-xs uppercase tracking-[0.24em] text-slate-200/80">Étudiant en école d'ingénieur • Icam • Stage IA Agentique / Programmation</p>
+      <p class="text-xs uppercase tracking-[0.24em] text-slate-200/80">Ingénieur généraliste • Icam • Intelligence artificielle & automatisation</p>
       <h1 class="text-4xl sm:text-5xl font-semibold leading-tight drop-shadow-[0_3px_10px_rgba(0,0,0,0.65)]">Yohan MARTIN</h1>
-      <p class="text-base sm:text-lg text-slate-100">
-        Bienvenue sur mon portfolio orienté agents IA, automatisation et computer vision. Chaque section ci-dessous illustre mes réalisations en IA et automatisations ainsi que les outils manipulés qui m'ont permis de découvrir l'IA agentique.
+      <p class="text-base sm:text-lg text-slate-100 leading-relaxed">
+        Bienvenue sur mon portfolio orienté intégration IA, automatisation et computer vision. Il présente mon expérience professionnelle ainsi que mes réalisations techniques et projets d'ingénierie.
       </p>
-      <div class="glass flex flex-wrap justify-center gap-3 text-sm">
+      <div class="flex flex-wrap justify-center gap-3 text-sm">
         <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/20 backdrop-blur-md">Agents (GPT → Python)</span>
-        <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/20 backdrop-blur-md">Workflows (n8n)</span>
+        <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/20 backdrop-blur-md">Automatisation & data</span>
         <span class="px-3 py-1.5 rounded-full border border-white/30 bg-white/20 backdrop-blur-md">Computer vision appliquée</span>
       </div>
     </div>
+
     <a href="#main-content" class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/80 hover:text-white">
       <div class="flex flex-col items-center gap-2 text-xs tracking-[0.28em] uppercase">
         <span>Scroll</span>
@@ -145,13 +162,12 @@
     </a>
   </section>
 
-  <!-- Navbar -->
+  <!-- NAVBAR -->
   <header class="border-b border-slate-100 sticky top-0 bg-white/90 backdrop-blur z-20">
     <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-      <a href="#intro" class="font-semibold tracking-tight text-slate-900">
-        Portfolio Yohan Martin
-      </a>
+      <a href="#intro" class="font-semibold tracking-tight text-slate-900">Portfolio Yohan Martin</a>
       <nav class="hidden sm:flex gap-5 text-sm text-slate-600">
+        <a href="#experience" class="hover:text-slate-900">Expérience</a>
         <a href="#agents" class="hover:text-slate-900">Agents</a>
         <a href="#tools" class="hover:text-slate-900">Outils agentiques</a>
         <a href="#python-tools" class="hover:text-slate-900">Scripts Python</a>
@@ -163,153 +179,148 @@
   </header>
 
   <main id="main-content" class="max-w-5xl mx-auto px-4 pb-16">
+
     <!-- HERO COURT -->
     <section class="pt-10 sm:pt-16 mb-16 animate-fade-up">
       <div class="flex flex-col gap-6 sm:gap-8 sm:flex-row sm:items-center">
         <div class="flex-1">
-          <p class="text-xs font-medium uppercase tracking-[0.18em] text-slate-500 mb-3">
-            Agents • Automatisation • Computer Vision
-          </p>
+          <p class="text-xs font-medium uppercase tracking-[0.18em] text-slate-500 mb-3">Agents • Automatisation • Computer Vision</p>
           <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight mb-3">
-            Étudiant ingénieur, en recherche d'un stage pour développer des agents IA et pipelines à forte valeur ajoutée.
+            Ingénieur orienté intégration IA, automatisation et optimisation des processus.
           </h2>
           <p class="text-sm sm:text-base text-slate-600 mb-5 max-w-xl">
-            Trois niveaux d'agents (GPT → n8n → Python), une prise en main de différents outils agentiques,
-            et des scripts Python mis en place pour automatiser la data et la vision par ordinateur.
+            Expérience concrète en développement de solutions IA et d'automatisation, complétée par des projets personnels en agents IA, Python et computer vision.
           </p>
           <div class="flex flex-wrap gap-3">
-            <a href="#agents"
-               class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg
-                      bg-slate-900 text-white hover:bg-slate-800 transition">
-              Voir les agents IA
-            </a>
-            <a href="#projects"
-               class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg
-                      border border-slate-300 text-slate-800 hover:border-slate-400 transition">
-              Découvrir les projets étudiants
-            </a>
+            <a href="#experience" class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg bg-slate-900 text-white hover:bg-slate-800 transition">Voir l'expérience</a>
+            <a href="#projects" class="inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg border border-slate-300 text-slate-800 hover:border-slate-400 transition">Découvrir les projets étudiants</a>
           </div>
         </div>
+
         <div class="flex-1 sm:max-w-xs sm:ml-4">
           <div class="border border-slate-100 rounded-2xl p-4 sm:p-5 shadow-sm bg-white">
-            <p class="text-xs font-medium text-slate-500 mb-2 uppercase tracking-[0.16em]">
-              Aperçu rapide
-            </p>
+            <p class="text-xs font-medium text-slate-500 mb-2 uppercase tracking-[0.16em]">Aperçu rapide</p>
             <ul class="text-xs sm:text-sm text-slate-700 space-y-1.5">
+              <li><span class="font-semibold text-slate-900">Expérience :</span> IA appliquée, automatisation, data & gestion de projets</li>
               <li><span class="font-semibold text-slate-900">Agents IA :</span> 2 GPT, 3 n8n, 5 Python</li>
               <li><span class="font-semibold text-slate-900">Outils agentiques :</span> Make, n8n, Agent Kit OpenAI, ChatGPT Codex & Mode Agent, Google Antigravity</li>
-              <li><span class="font-semibold text-slate-900">Python :</span> scripts d'automatisation (tri dataset, annotation vidéo, extraction d'images, nettoyage YOLO)</li>
-              <li><span class="font-semibold text-slate-900">Vision :</span> recréation locale des fonctionalités flips & crops façon Roboflow</li>
+              <li><span class="font-semibold text-slate-900">Python :</span> scripts d'automatisation et préparation de datasets</li>
+              <li><span class="font-semibold text-slate-900">Vision :</span> pipelines CV et préprocessing local</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION: AGENTS IA -->
-    <section id="agents" class="mb-16">
+    <!-- EXPÉRIENCE PROFESSIONNELLE -->
+    <section id="experience" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
-          Agents IA – du no-code aux scripts Python par vibe-coding
-        </h2>
-        <p class="text-xs uppercase tracking-[0.18em] text-slate-500">
-          3 niveaux • 10 agents
-        </p>
+        <h2 class="text-2xl font-semibold tracking-tight">Expérience professionnelle</h2>
+        <p class="text-xs uppercase tracking-[0.18em] text-slate-500">Stage ingénieur • IA & automatisation</p>
       </div>
-      <p class="text-sm text-slate-600 mb-5 max-w-3xl">
-        Développement progressif : assistants GPT simples, agents orchestrés dans n8n,
-        puis cinq niveaux d'agents IA créés en Python. Connexions à des
-        APIs, fichiers et fonctions de computer vision.
+
+      <p class="text-sm text-slate-600 mb-6 max-w-3xl">
+        Développement de solutions d'automatisation, d'intelligence artificielle et d'aide au pilotage à partir de besoins opérationnels réels. Les réalisations sont volontairement présentées de manière synthétique afin de préserver la confidentialité des projets.
       </p>
-      <div class="grid gap-5 md:grid-cols-3">
-        
-        <!-- Easy -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
-          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
-            Niveau 1 • Facile
-          </p>
-          <h3 class="text-base font-semibold mb-1">Agents GPT (2)</h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Assistants configurés dans ChatGPT (prompts + outils) pour analyser des textes
-            et générer des réponses structurées.
-          </p>
-          <p class="text-xs text-slate-500 mb-3">Technos : GPT, consignes système, OpenAPI, Node.js/Express, création d'API, parsing RSS</p>
-        
-          <!-- VIDEO -->
-          <div class="mt-3 rounded-lg overflow-hidden border border-slate-200 aspect-video">
-            <iframe
-              class="w-full h-full"
-              src="https://www.youtube-nocookie.com/embed/OswjV9iyMhA"
-              title="Démo Agents GPT"
-              frameborder="0"
-              allowfullscreen>
-            </iframe>
-          </div>
+
+      <div class="grid gap-5 md:grid-cols-3 mb-5">
+        <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md hover:-translate-y-0.5 transition">
+          <p class="text-3xl font-semibold text-slate-900 mb-2">Jusqu'à 90 %</p>
+          <p class="text-sm font-semibold mb-1">de processus automatisé</p>
+          <p class="text-xs text-slate-500">sur certaines tâches auparavant réalisées manuellement.</p>
         </article>
 
-
-        <!-- Medium -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
-          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
-            Niveau 2 • Intermédiaire
-          </p>
-          <h3 class="text-base font-semibold mb-1">Workflows n8n (3)</h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Trois agents n8n qui mixent appels OpenAI, webhooks et logique conditionnelle pour traiter images, contenus ou actions selon
-            les sorties IA.
-          </p>
-          <p class="text-xs text-slate-500 mb-3">Technos : n8n, HTTP modules, OpenAI, routage conditionnel, APIs, base de données vectorielles.</p>
-          
-          <!-- VIDEO -->
-          <div class="mt-3 rounded-lg overflow-hidden border border-slate-200 aspect-video">
-            <iframe
-              class="w-full h-full"
-              src="https://www.youtube-nocookie.com/embed/orJsZv9QAJs"
-              title="Démo Workflows n8n"
-              frameborder="0"
-              allowfullscreen>
-            </iframe>
-          </div>
+        <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md hover:-translate-y-0.5 transition">
+          <p class="text-3xl font-semibold text-slate-900 mb-2">Plusieurs jours</p>
+          <p class="text-sm font-semibold mb-1">économisés chaque mois</p>
+          <p class="text-xs text-slate-500">grâce à l'automatisation de traitements et d'analyses récurrents.</p>
         </article>
 
-        <!-- Hard -->
-        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
-          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">
-            Niveau 3 • Avancé
-          </p>
-          <h3 class="text-base font-semibold mb-1">Agents Python (5 niveaux)</h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Une série d'agents codés en Python avec boucle de raisonnement, appels d'API, manipulation de fichiers et fonctions CV. Pensés pour être
-            étendus (outils supplémentaires, scoring, monitoring). L'objectif ultime étant de créer un serveur MCP utilisable par un agent IA.
-          </p>
-          <p class="text-xs text-slate-500 mb-3">Technos : Python, OpenAI API, orchestration custom, hooks fichiers/APIs, serveur MCP.</p>
-        
-          <!-- VIDEO -->
-          <div class="mt-3 rounded-lg overflow-hidden border border-slate-200 aspect-video">
-            <iframe
-              class="w-full h-full"
-              src="https://www.youtube-nocookie.com/embed/0ogVsvpnUvo"
-              title="Démo Agents Python"
-              frameborder="0"
-              allowfullscreen>
-            </iframe>
-          </div>
+        <article class="border border-slate-200 rounded-xl p-5 bg-white hover:shadow-md hover:-translate-y-0.5 transition">
+          <p class="text-3xl font-semibold text-slate-900 mb-2">Multi-projets</p>
+          <p class="text-sm font-semibold mb-1">IA, data & automatisation</p>
+          <p class="text-xs text-slate-500">de l'analyse du besoin jusqu'aux tests, arbitrages et itérations.</p>
+        </article>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2">
+        <article class="border border-slate-200 rounded-xl p-4 bg-white hover:shadow-md hover:-translate-y-0.5 transition">
+          <h3 class="text-base font-semibold mb-2">IA & automatisation</h3>
+          <p class="text-sm text-slate-600 mb-3">Conception de systèmes IA et d'outils internes pour réduire les tâches répétitives et assister certaines activités nécessitant analyse ou expertise métier.</p>
+          <p class="text-xs text-slate-500">LLM • Python • API • Automatisation • Prompt engineering</p>
         </article>
 
+        <article class="border border-slate-200 rounded-xl p-4 bg-white hover:shadow-md hover:-translate-y-0.5 transition">
+          <h3 class="text-base font-semibold mb-2">Pilotage & exploitation des données</h3>
+          <p class="text-sm text-slate-600 mb-3">Création d'outils consolidant et structurant différentes données afin de réduire les manipulations manuelles et faciliter leur analyse.</p>
+          <p class="text-xs text-slate-500">Excel • VBA • Power Query • Dashboards</p>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-4 bg-white hover:shadow-md hover:-translate-y-0.5 transition">
+          <h3 class="text-base font-semibold mb-2">Gestion de projets</h3>
+          <p class="text-sm text-slate-600 mb-3">Analyse des besoins, priorisation de plusieurs sujets simultanés, expérimentation, tests utilisateurs et arbitrage entre impact, simplicité et maintenabilité.</p>
+          <p class="text-xs text-slate-500">Besoin • Priorisation • Itérations • Documentation</p>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-4 bg-white hover:shadow-md hover:-translate-y-0.5 transition">
+          <h3 class="text-base font-semibold mb-2">Organisation & conduite du changement</h3>
+          <p class="text-sm text-slate-600 mb-3">Restructuration d'un espace documentaire partagé en recherchant un compromis entre simplicité d'utilisation, gestion des accès, adoption par les équipes et pérennité.</p>
+          <p class="text-xs text-slate-500">Structuration • Accès • Adoption utilisateur • Pérennisation</p>
+        </article>
       </div>
     </section>
 
-    <!-- SECTION: ECOSYSTEME AGENTIQUE -->
-    <section id="tools" class="mb-16">
+    <!-- AGENTS IA -->
+    <section id="agents" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
-          Écosystème agentique et automatisation
-        </h2>
+        <h2 class="text-2xl font-semibold tracking-tight">Agents IA – du no-code aux scripts Python par vibe-coding</h2>
+        <p class="text-xs uppercase tracking-[0.18em] text-slate-500">3 niveaux • 10 agents</p>
+      </div>
+
+      <p class="text-sm text-slate-600 mb-5 max-w-3xl">
+        Développement progressif : assistants GPT simples, agents orchestrés dans n8n, puis cinq niveaux d'agents IA créés en Python. Connexions à des APIs, fichiers et fonctions de computer vision.
+      </p>
+
+      <div class="grid gap-5 md:grid-cols-3">
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">Niveau 1 • Facile</p>
+          <h3 class="text-base font-semibold mb-1">Agents GPT (2)</h3>
+          <p class="text-sm text-slate-600 mb-3">Assistants configurés dans ChatGPT (prompts + outils) pour analyser des textes et générer des réponses structurées.</p>
+          <p class="text-xs text-slate-500 mb-3">Technos : GPT, consignes système, OpenAPI, Node.js/Express, création d'API, parsing RSS</p>
+          <div class="mt-3 rounded-lg overflow-hidden border border-slate-200 aspect-video">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/OswjV9iyMhA" title="Démo Agents GPT" frameborder="0" loading="lazy" allowfullscreen></iframe>
+          </div>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">Niveau 2 • Intermédiaire</p>
+          <h3 class="text-base font-semibold mb-1">Workflows n8n (3)</h3>
+          <p class="text-sm text-slate-600 mb-3">Trois agents n8n qui mixent appels OpenAI, webhooks et logique conditionnelle pour traiter images, contenus ou actions selon les sorties IA.</p>
+          <p class="text-xs text-slate-500 mb-3">Technos : n8n, HTTP modules, OpenAI, routage conditionnel, APIs, base de données vectorielles.</p>
+          <div class="mt-3 rounded-lg overflow-hidden border border-slate-200 aspect-video">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/orJsZv9QAJs" title="Démo Workflows n8n" frameborder="0" loading="lazy" allowfullscreen></iframe>
+          </div>
+        </article>
+
+        <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
+          <p class="text-[11px] uppercase tracking-[0.18em] text-slate-500 mb-2">Niveau 3 • Avancé</p>
+          <h3 class="text-base font-semibold mb-1">Agents Python (5 niveaux)</h3>
+          <p class="text-sm text-slate-600 mb-3">Une série d'agents codés en Python avec boucle de raisonnement, appels d'API, manipulation de fichiers et fonctions CV. Pensés pour être étendus, avec pour objectif final la création d'un serveur MCP utilisable par un agent IA.</p>
+          <p class="text-xs text-slate-500 mb-3">Technos : Python, OpenAI API, orchestration custom, hooks fichiers/APIs, serveur MCP.</p>
+          <div class="mt-3 rounded-lg overflow-hidden border border-slate-200 aspect-video">
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/0ogVsvpnUvo" title="Démo Agents Python" frameborder="0" loading="lazy" allowfullscreen></iframe>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ÉCOSYSTÈME AGENTIQUE -->
+    <section id="tools" class="mb-10">
+      <div class="mb-6 flex items-baseline justify-between gap-3">
+        <h2 class="text-2xl font-semibold tracking-tight">Écosystème agentique et automatisation</h2>
       </div>
       <p class="text-sm text-slate-600 mb-4 max-w-3xl">
-        Afin d'apprendre en autodidacte l'IA agentique, j'ai ainsi cherché à manipuler différents niveaux d'agents IA dans des environnements différents. (No-code → Low-code → Code) J'ai donc pris en main certains outils d'IA agentique déjà existants : outils visuels (Make, n8n), kits
-        orientés actions (Agent Kit OpenAI), et les modes avancés de ChatGPT (Codex,
-        Mode Agent), ainsi que Google Antigravity, en suivant des tutoriels pour recréer les agents mentionnés précédemment ou en faisant du vibe coding.
+        Afin d'apprendre en autodidacte l'IA agentique, j'ai cherché à manipuler différents niveaux d'agents IA dans des environnements différents (No-code → Low-code → Code). J'ai ainsi pris en main plusieurs outils : Make, n8n, Agent Kit OpenAI, ChatGPT Codex, ChatGPT Mode Agent et Google Antigravity.
       </p>
       <div class="flex flex-wrap gap-2">
         <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">Make (Integromat)</span>
@@ -320,271 +331,159 @@
         <span class="px-3 py-1.5 text-xs rounded-full border border-slate-200 bg-slate-50 text-slate-800">Google Antigravity</span>
       </div>
     </section>
-    
-    <section class="mt-16">
-      <div class="overflow-x-auto flex gap-6 py-4 px-1 snap-x snap-mandatory">
-        <img src="assets/img/n8n.png"
-             class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
 
-    
-        <img src="assets/img/make.png"
-             class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
-    
-        <img src="assets/img/agentkit.png"
-             class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
-    
-        <img src="assets/img/antigravity.png"
-             class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
-    
-        <img src="assets/img/chatgpt-tools.png"
-             class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
+    <!-- GALERIE OUTILS : conservée depuis main2 -->
+    <section class="mb-16">
+      <div class="overflow-x-auto flex gap-6 py-4 px-1 snap-x snap-mandatory">
+        <img src="assets/img/n8n.png" alt="n8n" loading="lazy" class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
+        <img src="assets/img/make.png" alt="Make" loading="lazy" class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
+        <img src="assets/img/agentkit.png" alt="Agent Kit OpenAI" loading="lazy" class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
+        <img src="assets/img/antigravity.png" alt="Google Antigravity" loading="lazy" class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
+        <img src="assets/img/chatgpt-tools.png" alt="Outils ChatGPT" loading="lazy" class="h-48 rounded-xl shadow-md snap-center object-cover hover:scale-105 transition-transform duration-300" />
       </div>
     </section>
 
-    <section class="mt-16">
-    </section>
-
-    <!-- SECTION: STUDENT PROJECTS -->
+    <!-- PROJETS ÉTUDIANTS -->
     <section id="projects" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
-          Projets étudiants – IA ancrée dans un workflow réel
-        </h2>
+        <h2 class="text-2xl font-semibold tracking-tight">Projets étudiants – IA ancrée dans un workflow réel</h2>
       </div>
+
       <div class="space-y-5">
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Workflow complet + IA intégrée</h3>
           <p class="text-sm text-slate-600 mb-2">
-            Dans le cadre de mon mémoire scientifique de fin d'études, encadré par un enseignant-chercheur, j'ai eu à concevoir un workflow de bout en bout pour un club de volley : collecte et
-            traitement des données vidéo, analyse de positionnement des joueuses via computer
-            vision, restitution des insights pour faciliter les décisions tactiques et améliorer les performances des athlètes.</p> 
+            Dans le cadre de mon mémoire scientifique de fin d'études, encadré par un enseignant-chercheur, j'ai conçu un workflow de bout en bout pour un club de volley : collecte et traitement des données vidéo, analyse de positionnement des joueuses via computer vision, puis restitution d'insights pour faciliter les décisions tactiques et améliorer les performances des athlètes.
+          </p>
           <p class="text-sm text-slate-600 mb-2">
-            Pour ce faire, j'ai eu à développer un ensemble de fonctionnalités grâce à de la programmation en python et Roboflow 
-            (outil de création de modèles de vision par ordinateur à partir d'une banque d'images annotées).</p>
+            Pour ce faire, j'ai développé un ensemble de fonctionnalités grâce à de la programmation Python et Roboflow, outil de création de modèles de vision par ordinateur à partir d'une banque d'images annotées.
+          </p>
           <p class="text-sm text-slate-600 mb-2">
-            Ce travail de recherche a nécessité des comparaisons entre modèles, basées sur des modifications du dataset. 
-            Ces comparaisons ont mis en évidence le rôle clé de la nature des données dans la précision et la robustesse des détections. 
-            Elles m’ont ainsi permis de développer une meilleure maîtrise du raisonnement expérimental en intelligence artificielle. </p>
-          <p class="text-xs text-slate-500">Livrable : outil d'automatisation combinant perception (CV) et reporting (données exploitables).</p>
+            Ce travail de recherche a nécessité des comparaisons entre modèles basées sur des modifications du dataset. Ces comparaisons ont mis en évidence le rôle clé de la nature des données dans la précision et la robustesse des détections et m'ont permis de développer une meilleure maîtrise du raisonnement expérimental en intelligence artificielle.
+          </p>
+          <p class="text-xs text-slate-500 mb-4">Livrable : outil d'automatisation combinant perception (CV) et reporting (données exploitables).</p>
 
           <figure class="flex flex-col items-center gap-2">
-            <a href="assets/img/graph_modeles.png" target="_blank">
-              <img src="assets/img/graph_modeles.png"
-                   class="h-64 rounded-xl shadow-md snap-center object-cover cursor-zoom-in" />
+            <a href="assets/img/graph_modeles.png" target="_blank" rel="noopener">
+              <img src="assets/img/graph_modeles.png" alt="Comparaison des performances des modèles" loading="lazy" class="h-64 rounded-xl shadow-md object-cover cursor-zoom-in" />
             </a>
-            <figcaption class="text-sm text-gray-500 text-center">
-              Comparaison des performances des modèles en fonction des variations du dataset
-            </figcaption>
+            <figcaption class="text-sm text-gray-500 text-center">Comparaison des performances des modèles en fonction des variations du dataset</figcaption>
           </figure>
         </article>
 
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Prototype d'un SaaS en computer vision</h3>
           <p class="text-sm text-slate-600 mb-2">
-            J'ai alors enveloppé l'ensemble de la solution mentionnée précédemment, dans un prototype de SaaS, en intégrant une interface utilisateur afin de permettre à un individu non technique de pouvoir prendre en main la solution.
+            J'ai enveloppé l'ensemble de la solution mentionnée précédemment dans un prototype de SaaS, en intégrant une interface utilisateur afin de permettre à un utilisateur non technique de prendre en main la solution.
           </p>
-          <p class="text-xs text-slate-500">Objectif : valider l'intégration d'une solution technologique et technique adaptée aux spécificités du client (facilité d'utilisation, intégration technologique aux locaux, transfert de compétences) .</p>
-          <!-- VIDEO -->
+          <p class="text-xs text-slate-500">Objectif : valider l'intégration d'une solution technologique adaptée aux spécificités du client : facilité d'utilisation, intégration aux locaux et transfert de compétences.</p>
+
           <div class="mt-3 rounded-lg overflow-hidden border border-slate-200 aspect-video">
-            <iframe
-              class="w-full h-full"
-              src="https://www.youtube-nocookie.com/embed/4xZcox58fDs"
-              title="Démo Agents GPT"
-              frameborder="0"
-              allowfullscreen>
-            </iframe
+            <iframe class="w-full h-full" src="https://www.youtube-nocookie.com/embed/4xZcox58fDs" title="Démo du prototype SaaS Computer Vision" frameborder="0" loading="lazy" allowfullscreen></iframe>
+          </div>
         </article>
       </div>
     </section>
 
-    <!-- SECTION: PYTHON TOOLS (AUTOMATISATION) -->
+    <!-- SCRIPTS PYTHON -->
     <section id="python-tools" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
-          Scripts Python d'automatisation
-        </h2>
+        <h2 class="text-2xl font-semibold tracking-tight">Scripts Python d'automatisation</h2>
       </div>
-    
+
       <p class="text-sm text-slate-600 mb-5 max-w-3xl">
-        Pack de scripts pour accélérer la préparation de données et les tâches répétitives.
-        Ces outils font partis des solutions que j'ai créées pour automatiser les tâches les plus répétitives que j'ai rencontrées au fil de mes projets afin de me concentrer sur le coeur des problématiques.
+        Pack de scripts pour accélérer la préparation de données et les tâches répétitives. Ces outils font partie des solutions que j'ai créées au fil de mes projets afin de réduire les manipulations à faible valeur ajoutée et de me concentrer sur le cœur des problématiques.
       </p>
-    
+
       <div class="grid gap-5 md:grid-cols-2">
-    
-        <!-- Script 1 -->
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Tri et copie sélective de dataset</h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Script pour parcourir des images, copier les couples image/.txt
-            vers un dossier de destination et suivre l'état (copié / non copié). Outil créé pour filtrer
-            rapidement un dataset annoté afin de conserver uniquement les images exploitables.
-          </p>
-          <p class="text-xs text-slate-500 mb-2">
-            Fichier&nbsp;: <code>auto_alim_dataset.py</code>
-          </p>
-          <a href="assets/scripts/auto_alim_dataset.py"
-             download
-             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
-            Télécharger le script
-          </a>
+          <p class="text-sm text-slate-600 mb-3">Script pour parcourir des images, copier les couples image/.txt vers un dossier de destination et suivre l'état copié / non copié. Outil créé pour filtrer rapidement un dataset annoté afin de conserver uniquement les images exploitables.</p>
+          <p class="text-xs text-slate-500 mb-2">Fichier : <code>auto_alim_dataset.py</code></p>
+          <a href="assets/scripts/auto_alim_dataset.py" download class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">Télécharger le script</a>
         </article>
-    
-        <!-- Script 2 -->
+
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Annotation vidéo au clavier</h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Outil pour extraire des frames, les labelliser (service,
-            réception, passe, attaque, bloc) et générer un CSV + captures horodatées grâce uniquement aux touches clavier. Navigation
-            rapide (flèches, J/K pour +3s/-3s) et contrôle de vitesse. Permet d'accélérer la création d'un dataset tout en triant les données (logs + dossiers).
-          </p>
-          <p class="text-xs text-slate-500 mb-2">
-            Fichier&nbsp;: <code>Annotateur_frame.py</code>
-          </p>
-          <a href="assets/scripts/Annotateur_frame.py"
-             download
-             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
-            Télécharger le script
-          </a>
+          <p class="text-sm text-slate-600 mb-3">Outil pour extraire des frames, les labelliser (service, réception, passe, attaque, bloc) et générer un CSV + captures horodatées grâce aux touches clavier. Navigation rapide et contrôle de vitesse pour accélérer la création d'un dataset.</p>
+          <p class="text-xs text-slate-500 mb-2">Fichier : <code>Annotateur_frame.py</code></p>
+          <a href="assets/scripts/Annotateur_frame.py" download class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">Télécharger le script</a>
         </article>
-    
-        <!-- Script 3 -->
+
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Extraction rapide de clips</h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Wrapper Python au-dessus d'ffmpeg (via imageio-ffmpeg) pour découper une vidéo
-            longue en extraits précis (durée ou intervalle). Même si c'est une fonctionnalité qui semble simple, il devient cependant indispensable pour découper un extrait d'une vidéo trop lourde (> 5 Go, blocages si l'on passe par des outils en ligne).
-          </p>
-          <p class="text-xs text-slate-500 mb-2">
-            Fichier&nbsp;: <code>extrait_longue_video.py</code>
-          </p>
-          <a href="assets/scripts/extrait_longue_video.py"
-             download
-             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
-            Télécharger le script
-          </a>
+          <p class="text-sm text-slate-600 mb-3">Wrapper Python au-dessus d'ffmpeg pour découper une vidéo longue en extraits précis. Une solution utile lorsque les fichiers sont trop lourds pour être manipulés facilement avec des outils en ligne.</p>
+          <p class="text-xs text-slate-500 mb-2">Fichier : <code>extrait_longue_video.py</code></p>
+          <a href="assets/scripts/extrait_longue_video.py" download class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">Télécharger le script</a>
         </article>
-    
-        <!-- Script 4 -->
+
         <article class="border border-slate-200 rounded-xl p-4 hover:shadow-md hover:-translate-y-0.5 transition bg-white">
           <h3 class="text-base font-semibold mb-1">Nettoyage des annotations</h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Suppression automatique des fichiers .txt orphelins lorsqu'aucune image n'existe. Le script vient comparer deux dossiers, l'un contenant des images, l'autre contenant des fichiers textes associés. 
-            Si l'image n'est pas présente, son fichier est alors supprimé dans l'autre dossier.
-          </p>
-          <p class="text-sm text-slate-600 mb-3">
-            Permet d'assainir un dataset avant entraînement.
-          </p>
-          <p class="text-xs text-slate-500 mb-2">
-            Fichier&nbsp;: <code>suppression_auto.py</code>
-          </p>
-          <a href="assets/scripts/suppression_auto.py"
-             download
-             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
-            Télécharger le script
-          </a>
+          <p class="text-sm text-slate-600 mb-3">Suppression automatique des fichiers .txt orphelins lorsqu'aucune image associée n'existe, afin d'assainir le dataset avant entraînement.</p>
+          <p class="text-xs text-slate-500 mb-2">Fichier : <code>suppression_auto.py</code></p>
+          <a href="assets/scripts/suppression_auto.py" download class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">Télécharger le script</a>
         </article>
-    
       </div>
     </section>
 
-
-    <!-- SECTION: RECREATION ROBOFLOW LOCAL -->
+    <!-- RECRÉATION ROBOFLOW LOCAL -->
     <section id="cv-local" class="mb-16">
       <div class="mb-6 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
-          Recréation locale de fonctions Roboflow</h2>
+        <h2 class="text-2xl font-semibold tracking-tight">Recréation locale de fonctions Roboflow</h2>
       </div>
+
       <p class="text-sm text-slate-600 mb-4 max-w-3xl">
-        Pour garder la maîtrise des données, j'ai reconstruit en local, avec python, des transformations
-        clés façon Roboflow (Saas cloud) : flips horizontaux par lot et crops automatiques des
-        régions d'intérêt. Ces outils permettent d'augmenter drastiquement la taille d'un dataset mais ont un coût en crédits non négligeable sur Roboflow, d'où la volonté d'avoir recréé ces fonctionnalités en local.
+        Pour garder la maîtrise des données, j'ai reconstruit en local avec Python des transformations clés façon Roboflow : flips horizontaux par lot et crops automatiques des régions d'intérêt. Cela permet d'augmenter et préparer un dataset sans dépendre systématiquement des crédits d'un outil cloud.
       </p>
+
       <div class="grid gap-5 md:grid-cols-2">
         <article class="border border-slate-200 rounded-xl p-4 bg-white">
           <h3 class="text-base font-semibold mb-1">Inversion horizontale</h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Automatisation des flips horizontaux avec gestion des annotations, pour augmenter le dataset sans dépendre d'outils cloud.</p>
-          <p class="text-xs text-slate-500 mb-2">
-            Fichier&nbsp;: <code>Flip.py</code>
-          </p>
-          <a href="assets/scripts/Flip.py"
-             download
-             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
-            Télécharger le script
-          </a>
+          <p class="text-sm text-slate-600 mb-3">Automatisation des flips horizontaux avec gestion des annotations, pour augmenter le dataset sans dépendre d'outils cloud.</p>
+          <p class="text-xs text-slate-500 mb-2">Fichier : <code>Flip.py</code></p>
+          <a href="assets/scripts/Flip.py" download class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">Télécharger le script</a>
         </article>
+
         <article class="border border-slate-200 rounded-xl p-4 bg-white">
           <h3 class="text-base font-semibold mb-1">Automatic cropping</h3>
-          <p class="text-sm text-slate-600 mb-3">
-            Découpage local d'images ou zones d'intérêt, intégré à mes scripts CV pour
-            reproduire la chaîne de préprocessing Roboflow.</p>
-          <p class="text-xs text-slate-500 mb-2">
-            Fichier&nbsp;: <code>Crop.py</code>
-          </p>
-          <a href="assets/scripts/Crop.py"
-             download
-             class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">
-            Télécharger le script
-          </a>
+          <p class="text-sm text-slate-600 mb-3">Découpage local d'images ou zones d'intérêt, intégré à mes scripts CV pour reproduire une chaîne de préprocessing similaire.</p>
+          <p class="text-xs text-slate-500 mb-2">Fichier : <code>Crop.py</code></p>
+          <a href="assets/scripts/Crop.py" download class="inline-block mt-1 px-3 py-1.5 text-xs rounded-lg border border-slate-300 hover:bg-slate-100 transition">Télécharger le script</a>
         </article>
       </div>
     </section>
 
-    
-
-    <!-- SECTION: ABOUT / CONTACT -->
+    <!-- À PROPOS / CONTACT -->
     <section id="about" class="mb-10">
       <div class="mb-4 flex items-baseline justify-between gap-3">
-        <h2 class="text-2xl font-semibold tracking-tight">
-          À propos & contact
-        </h2>
-      </div>
-      <p class="text-sm text-slate-600 mb-3 max-w-3xl">
-        Étudiant en école d'ingénieur à l'Icam de Nantes, passionné par les agents IA et la vision par ordinateur.
-        Je cherche un stage de fin d'études (6 mois à partir de février 2026) sur le sujet de l'intelligence artificielle agentique ou en rapport avec l'intelligence artificielle et l'analyse de données.</p>
-      <p class="text-sm text-slate-600 mb-3 max-w-3xl">
-        Grâce à une veille régulière sur les innovations en IA, j’identifie l’IA agentique comme un levier de transformation incontournable. 
-        Malgré le fait que je ne sois pas expert, je comprends que c'est une technologie encore émergente mais je suis convaincu que sa capacité à prendre des initiatives, orchestrer des tâches complexes et adapter ses 
-        actions en temps réel bouleversera les méthodes de travail, la gestion des données et l’architecture opérationnelle des entreprises.</p>
-      <p class="text-sm text-slate-600 mb-3 max-w-3xl">
-        Bien que je concentre actuellement mes efforts sur l’IA agentique, je reste ouvert à toute opportunité visant à développer des solutions de productivité ou d'analyse, 
-        qu’elles reposent sur l’intelligence artificielle, la programmation ou d’autres approches technologiques.  </p>
-      <div class="flex flex-wrap gap-3 text-sm mt-6">
-        <!-- Email -->
-        <a href="mailto:yohan.martin@2026.icam.fr"
-           class="contact-btn">
-          <span>yohan.martin@2026.icam.fr</span>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13l8-6.99V6H4zm0 4.25V18h16v-5.75l-7.4 5.16a1 1 0 0 1-1.2 0L4 10.25z"/>
-          </svg>
-        </a>
-      
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/yohan-martin-993505229" target="_blank" rel="noopener"
-           class="contact-btn contact-btn--linkedin">
-          <span>LinkedIn</span>
-          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 
-                     1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c
-                     .837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 
-                     1.248 0 .694.521 1.248 1.327 1.248h.016zM8.019 13.394h2.4V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 
-                     1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 
-                     0-1.845.7-2.165 1.193v.025h-.016V6.17h-2.4c.03.678 0 7.225 0 7.225z"/>
-          </svg>
-        </a>
-      
-        <!-- CV -->
-        <a href="cv_yohan_martin.pdf" target="_blank" rel="noopener"
-           class="contact-btn contact-btn--cv">
-          <span>CV (PDF)</span>
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2zm7 1.5V8h4.5L13 3.5zM8 11h8v2H8v-2zm0 4h5v2H8v-2z"/>
-          </svg>
-        </a>
+        <h2 class="text-2xl font-semibold tracking-tight">À propos & contact</h2>
       </div>
 
+      <p class="text-sm text-slate-600 mb-3 max-w-3xl">
+        Ingénieur généraliste diplômé de l'Icam, avec une expérience professionnelle en intégration IA, automatisation et outils de pilotage. Je développe également des projets personnels autour des agents IA, de Python et de la vision par ordinateur.
+      </p>
+      <p class="text-sm text-slate-600 mb-3 max-w-3xl">
+        Mon approche consiste à partir du besoin réel puis à choisir le niveau de technologie pertinent — automatisation classique, traitement de données ou IA — en recherchant le meilleur compromis entre impact, simplicité d'utilisation et maintenabilité.
+      </p>
+
+      <div class="flex flex-wrap gap-3 text-sm mt-6">
+        <a href="mailto:yohan.martin@2026.icam.fr" class="contact-btn">
+          <span>yohan.martin@2026.icam.fr</span>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm0 2v.01L12 13l8-6.99V6H4zm0 4.25V18h16v-5.75l-7.4 5.16a1 1 0 0 1-1.2 0L4 10.25z"/></svg>
+        </a>
+
+        <a href="https://linkedin.com/in/yohan-martin-993505229" target="_blank" rel="noopener" class="contact-btn contact-btn--linkedin">
+          <span>LinkedIn</span>
+          <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zM8.019 13.394h2.4V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193V6.169h-2.4c.03.678 0 7.225 0 7.225z"/></svg>
+        </a>
+
+        <a href="cv_yohan_martin.pdf" target="_blank" rel="noopener" class="contact-btn contact-btn--cv">
+          <span>CV (PDF)</span>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 2h9l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2zm7 1.5V8h4.5L13 3.5zM8 11h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+        </a>
+      </div>
     </section>
+
   </main>
 </body>
 </html>
